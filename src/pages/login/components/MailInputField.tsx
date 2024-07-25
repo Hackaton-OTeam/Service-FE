@@ -14,7 +14,7 @@ const MailInputField = React.forwardRef<HTMLInputElement, MailInputFieldProps>(
         <input
           type="email"
           className={cn(
-            "flex w-full bg-background pl-1 text-base ring-offset-background file:bg-transparent file:text-base file:font-medium placeholder:text-muted-foreground focus-visible:outline-none disabled:opacity-50",
+            "text-brandInput flex w-full bg-background pl-1 text-base ring-offset-background file:bg-transparent file:text-base file:font-medium placeholder:text-muted-foreground focus-visible:outline-none disabled:opacity-50",
             className,
           )}
           ref={ref}
