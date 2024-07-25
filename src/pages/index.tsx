@@ -1,5 +1,5 @@
 import Characters from "@/components/Characters";
-import Logo from "@/components/Logo";
+import JustLogo from "@/components/JustLogo";
 import { Link } from "@/router";
 import { Button } from "@ui/components/ui/button";
 import { useEffect, useState } from "react";
@@ -19,7 +19,7 @@ const MainPage = () => {
   return (
     <main className="flex h-full flex-col items-center justify-center">
       {isLoading ? (
-        <Logo size={"25%"} />
+        <JustLogo size={"25%"} />
       ) : (
         <div className="flex h-full flex-col justify-between px-4 py-20">
           <div className="flex grow flex-col justify-center gap-5">

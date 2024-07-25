@@ -1,4 +1,4 @@
-import Logo from "@/components/Logo";
+import JustLogo from "@/components/JustLogo";
 import { MailInputField } from "@/pages/login/components/MailInputField";
 import { PWInputField } from "@/pages/login/components/PWInputField";
 import { Link, useNavigate } from "@/router";
@@ -50,7 +50,7 @@ const Login = () => {
   return (
     <main className="flex h-full flex-col items-center justify-center gap-10 px-4">
       <section className="flex flex-col items-center justify-center gap-3">
-        <Logo size={"20%"} />
+        <JustLogo size={"20%"} />
         <div>서비스명 이미지로 들어올 것</div>
       </section>
       <main className="flex w-full flex-col gap-5">
