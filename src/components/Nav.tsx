@@ -3,6 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import usePreviousPath from "@/hooks/usePreviousPath";
 
 import Logo from "@/components/Logo";
+import BackIcon from "@/components/BackIcon";
 
 const Nav = () => {
   const { pathname } = useLocation();
@@ -18,9 +19,11 @@ const Nav = () => {
       {showLogo ? (
         <Logo size={"10%"} isNav />
       ) : (
-        <Link to={previousPath} onClick={popPreviousPath}>
-          ddd
-        </Link>
+        <div className="flex items-center">
+          <Link to={previousPath} onClick={popPreviousPath}>
+            <BackIcon />
+          </Link>
+        </div>
       )}
     </nav>
   );

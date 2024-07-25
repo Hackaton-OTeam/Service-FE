@@ -15,7 +15,7 @@ const usePreviousPath = (): [string, () => void] => {
 
       console.log(pathStack);
 
-      if (["/", "/home"].includes(pathname)) {
+      if (["/"].includes(pathname)) {
         storage.setItem("pathStack", JSON.stringify([location]));
         setPreviousPath(location);
         return;
