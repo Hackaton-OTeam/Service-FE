@@ -23,7 +23,7 @@ const Nav = () => {
       )}
     >
       {showLogo ? (
-        <Logo size="10%" isNav />
+        <Logo size="12%" isStart />
       ) : (
         <>
           <div className="flex items-center">
