@@ -4,13 +4,13 @@ import LogoImage from "@/assets/logo.png";
 
 interface LogoProps {
   size?: number | string;
-  isStart?: boolean;
+  className?: string;
 }
 
 const Logo = (props: LogoProps) => {
-  const { size = 42, isStart } = props;
+  const { size = 42, className } = props;
   return (
-    <div className={cn("flex items-center", { "justify-center": !isStart })}>
+    <div className={cn("flex items-center", className || "justify-center")}>
       <img
         src={LogoImage}
         width={size}
