@@ -13,8 +13,6 @@ const usePreviousPath = (): [string, () => void] => {
         storage.getItem("pathStack") || "[]",
       );
 
-      console.log(pathStack);
-
       if (["/"].includes(pathname)) {
         storage.setItem("pathStack", JSON.stringify([location]));
         setPreviousPath(location);
@@ -38,8 +36,6 @@ const usePreviousPath = (): [string, () => void] => {
       const pathStack: string[] = JSON.parse(
         storage.getItem("pathStack") || "[]",
       );
-
-      console.log(pathStack);
 
       if (pathStack.length > 1) {
         pathStack.pop();
