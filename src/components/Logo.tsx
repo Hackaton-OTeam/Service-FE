@@ -2,18 +2,23 @@ import { cn } from "@ui/lib/utils";
 
 import LogoImage from "@/assets/logo.png";
 
-import { Link } from "@/router";
-
 interface LogoProps {
   size?: number | string;
+  isNav?: boolean;
 }
 
 const Logo = (props: LogoProps) => {
-  const { size = 42 } = props;
+  const { size = 42, isNav } = props;
   return (
-    <Link to="/" className="flex justify-center">
-      <img src={LogoImage} width={size} loading="lazy" alt="로고" />
-    </Link>
+    <div className={cn("flex items-center", { "justify-center": !isNav })}>
+      <img
+        src={LogoImage}
+        width={size}
+        className="h-auto"
+        loading="lazy"
+        alt="로고"
+      />
+    </div>
   );
 };
 

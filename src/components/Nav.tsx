@@ -16,7 +16,7 @@ const Nav = () => {
   return (
     <nav className="my-2 flex h-10 w-full justify-between self-stretch px-4">
       {showLogo ? (
-        <Logo size={"10%"} />
+        <Logo size={"10%"} isNav />
       ) : (
         <Link to={previousPath} onClick={popPreviousPath}>
           ddd
