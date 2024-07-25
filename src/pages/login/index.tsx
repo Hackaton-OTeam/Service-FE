@@ -1,4 +1,4 @@
-import JustLogo from "@/components/JustLogo";
+import Logo from "@/components/Logo";
 import { MailInputField } from "@/pages/login/components/MailInputField";
 import { PWInputField } from "@/pages/login/components/PWInputField";
 import { Link, useNavigate } from "@/router";
@@ -11,8 +11,8 @@ const Login = () => {
   const navigate = useNavigate();
 
   const [values, setValues] = useState({
-    email: "",
-    password: "",
+    option1: "",
+    option2: "",
   });
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -28,9 +28,9 @@ const Login = () => {
   const [loginFalse, setLoginFalse] = useState(false);
   let toastContent = "";
   const handleLogin = () => {
-    if (values.email === "") {
+    if (values.option1 === "") {
       toastContent = "이메일을 입력해주세요.";
-    } else if (values.password === "") {
+    } else if (values.option2 === "") {
       toastContent = "비밀번호를 입력해주세요.";
     } else {
       // 백엔드 로그인 API 연결
@@ -50,21 +50,23 @@ const Login = () => {
   return (
     <main className="flex h-full flex-col items-center justify-center gap-10 px-4">
       <section className="flex flex-col items-center justify-center gap-3">
-        <JustLogo size={"20%"} />
+        <Logo size={"20%"} />
         <div>서비스명 이미지로 들어올 것</div>
       </section>
       <main className="flex w-full flex-col gap-5">
         <MailInputField
           placeholder="이메일을 입력해주세요."
-          name="email"
-          value={values.email}
+          name="option1"
+          value={values.option1}
           onChange={handleChange}
+          autoComplete="off"
         />
         <PWInputField
           placeholder="비밀번호를 입력해주세요."
-          name="password"
-          value={values.password}
+          name="option2"
+          value={values.option2}
           onChange={handleChange}
+          autoComplete="off"
         />
       </main>
       <footer className="flex w-full flex-col items-center gap-4">
