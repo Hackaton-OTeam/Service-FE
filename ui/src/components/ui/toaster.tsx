@@ -10,7 +10,7 @@ import {
 } from "@ui/components/ui/toast";
 import { useToast } from "@ui/components/ui/use-toast";
 
-import toastAlarmImage from "@/assets/toastAlarm.png";
+import ToastAlarmIcon from "@/components/ToastAlarmIcon";
 
 interface ToasterProps {
   className?: string;
@@ -28,14 +28,7 @@ export function Toaster(props: ToasterProps) {
           <Toast key={id} {...props}>
             {isDestructive ? (
               <div className="flex w-full justify-start">
-                <div className="flex items-center justify-center">
-                  <img
-                    src={toastAlarmImage}
-                    className="h-auto w-[18px]"
-                    loading="lazy"
-                    alt="toasterAlarmIcon"
-                  />
-                </div>
+                <ToastAlarmIcon />
                 {title && (
                   <ToastTitle className="grow text-center">{title}</ToastTitle>
                 )}

@@ -1,6 +1,6 @@
 import toastAlarmImage from "@/assets/toastAlarm.png";
 
-const toasterAlarmIcon = () => {
+const ToastAlarmIcon = () => {
   return (
     <div className="flex items-center justify-center">
       <img
@@ -13,4 +13,4 @@ const toasterAlarmIcon = () => {
   );
 };
 
-export default toasterAlarmIcon;
+export default ToastAlarmIcon;
