@@ -5,10 +5,13 @@ import { Link, useNavigate } from "@/router";
 import { Button } from "@ui/components/ui/button";
 import { useToast } from "@ui/components/ui/use-toast";
 import { ChangeEvent, useState } from "react";
+import { useMutationLogin } from "@/hooks/mutation/useMutationLogin";
 
 const Login = () => {
   const { toast } = useToast();
   const navigate = useNavigate();
+
+  const mutation = useMutationLogin();
 
   const [values, setValues] = useState({
     option1: "",
@@ -25,8 +28,7 @@ const Login = () => {
     });
   };
 
-  const [loginFalse, setLoginFalse] = useState(false);
-  let toastContent = "";
+  let toastContent = "이메일 또는 비밀번호를 확인해주세요.";
   const handleLogin = () => {
     if (values.option1 === "") {
       toastContent = "이메일을 입력해주세요.";
@@ -34,11 +36,10 @@ const Login = () => {
       toastContent = "비밀번호를 입력해주세요.";
     } else {
       // 백엔드 로그인 API 연결
-      if (loginFalse) toastContent = "이메일 또는 비밀번호를 확인해주세요.";
-      else {
-        navigate("/home", { replace: true });
-        return;
-      }
+      mutation.mutate({
+        userEmail: values.option1,
+        userPassword: values.option2,
+      });
     }
 
     toast({
