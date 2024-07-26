@@ -1,33 +1,35 @@
-import { Link, useLocation } from "react-router-dom";
-import usePreviousPath from "@/hooks/usePreviousPath";
+import { Link } from "react-router-dom";
 import Logo from "@/components/Logo";
 import BackIcon from "@/components/BackIcon";
 import { cn } from "@ui/lib/utils";
+import LevelIcon from "@/components/Level";
 
-const Nav = () => {
-  const { pathname } = useLocation();
-  const [previousPath, popPreviousPath] = usePreviousPath();
+interface NavProps {
+  //backLink를 보내주면, icon은 backIcon 쓰면 되고,
+  //안 보내주면 기존 아이콘
+  backLink?: string;
+  NavTitle?: string;
+}
 
-  const noNavPaths = ["/", "/login"];
-  const showLogo = pathname === "/home";
-  const showNav = !noNavPaths.includes(pathname);
-  const NavTitle = "회원가입";
-
-  if (!showNav) return null;
+const Nav = (props: NavProps) => {
+  const { backLink, NavTitle } = props;
 
   return (
     <nav
       className={cn(
         "my-2 flex h-10 w-full self-stretch px-4",
-        showLogo ? "justify-between" : "justify-start",
+        !backLink ? "justify-between" : "justify-start",
       )}
     >
-      {showLogo ? (
-        <Logo size="12%" className="justify-start" />
+      {!backLink ? (
+        <>
+          <Logo size="12%" className="justify-start" />
+          <LevelIcon />
+        </>
       ) : (
         <>
           <div className="flex items-center">
-            <Link to={previousPath} onClick={popPreviousPath}>
+            <Link to={backLink}>
               <BackIcon />
             </Link>
           </div>
