@@ -24,15 +24,14 @@ const SignUp = () => {
   const [errorMent, setErrorMent] = useState<{
     option1: string;
     option2: string;
-    checkOption2: string;
-  }>({ option1: "", option2: "", checkOption2: "" });
+  }>({ option1: "", option2: "" });
 
   const handleOption1Change = (event: React.ChangeEvent<HTMLInputElement>) => {
     setUserOption1(event.target.value);
     if (event.target.value === "") {
       setErrorMent(prev => ({
         ...prev,
-        option1: "",
+        option1: "dsafsdfdf",
       }));
       return;
     }
@@ -70,14 +69,14 @@ const SignUp = () => {
     ) {
       setErrorMent(prev => ({
         ...prev,
-        checkOption2: "비밀번호가 일치합니다.",
+        option2: "비밀번호가 일치합니다.",
       }));
       setIsCheckOption2Pass(true);
       return;
     } else {
       setErrorMent(prev => ({
         ...prev,
-        checkOption2: "비밀번호가 일치하지 않습니다.",
+        option2: "비밀번호가 일치하지 않습니다.",
       }));
       setIsCheckOption2Pass(false);
       return;
@@ -85,7 +84,7 @@ const SignUp = () => {
   };
 
   const handleSignup = () => {
-    setErrorMent({ option1: "", option2: "", checkOption2: "" });
+    setErrorMent({ option1: "", option2: "" });
   };
 
   return (
@@ -94,10 +93,10 @@ const SignUp = () => {
         <Nav backLink="/login" NavTitle="회원가입" />
       </header>
       <main className="flex h-full flex-col items-center justify-start gap-10 px-4">
-        <main className="flex w-full flex-col pt-5">
+        <main className="flex w-full flex-col gap-16 pt-5">
           <div className="flex w-full flex-col gap-[7px]">
             <div className="pl-[2px] text-xl font-bold">이메일</div>
-            <div className="flex flex-col gap-1">
+            <div className="flex flex-col gap-[10px]">
               <div className="flex gap-[15px]">
                 <MailInputField
                   placeholder="이메일"
@@ -112,17 +111,14 @@ const SignUp = () => {
           <div className="flex w-full flex-col gap-[7px]">
             <div className="pl-[2px] text-xl font-bold">비밀번호</div>
             <div className="flex flex-col gap-4">
-              <div className="flex flex-col gap-1">
-                <PWInputField
-                  placeholder="비밀번호"
-                  value={userOption2}
-                  onChange={handleOption2Change}
-                  isPass={isOption2Pass}
-                  autoComplete="off"
-                />
-                <ErrorMentBox ment={errorMent.option2} />
-              </div>
-              <div className="flex flex-col gap-1">
+              <PWInputField
+                placeholder="비밀번호"
+                value={userOption2}
+                onChange={handleOption2Change}
+                isPass={isOption2Pass}
+                autoComplete="off"
+              />
+              <div className="flex flex-col gap-[10px]">
                 <PWInputField
                   placeholder="비밀번호 확인"
                   doubleCheck
@@ -131,7 +127,7 @@ const SignUp = () => {
                   autoComplete="off"
                 />
                 <ErrorMentBox
-                  ment={errorMent.checkOption2}
+                  ment={errorMent.option2}
                   isPass={isCheckOption2Pass}
                 />
               </div>

@@ -9,13 +9,15 @@ const ErrorMentBox = (props: ErrorMentBoxProps) => {
   const { isPass, ment } = props;
 
   return (
-    <div
-      className={cn("flex items-center px-3 text-[13px]", {
-        "text-brand": isPass,
-        "text-brandError": !isPass,
-      })}
-    >
-      {ment}
+    <div className="h-[30px]">
+      <div
+        className={cn("flex items-center px-3 text-[13px]", {
+          "text-brand": isPass,
+          "text-brandError": !isPass,
+        })}
+      >
+        {ment}
+      </div>
     </div>
   );
 };
