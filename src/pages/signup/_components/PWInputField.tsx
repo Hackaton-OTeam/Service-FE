@@ -7,11 +7,13 @@ import CheckPWIcon from "@/components/CheckPWIcon";
 import { useState } from "react";
 
 export interface PWInputFieldProps
-  extends React.InputHTMLAttributes<HTMLInputElement> {}
+  extends React.InputHTMLAttributes<HTMLInputElement> {
+  doubleCheck?: boolean;
+}
 
 //TODO: 비밀번호 정규식 확인 후 사용가능 여부 알려주는 아이콘으로 수정
 const PWInputField = React.forwardRef<HTMLInputElement, PWInputFieldProps>(
-  ({ className, ...props }, ref) => {
+  ({ className, doubleCheck, ...props }, ref) => {
     const [showPW, setShowPW] = useState(false);
 
     const handleShowPW = () => {
@@ -24,13 +26,15 @@ const PWInputField = React.forwardRef<HTMLInputElement, PWInputFieldProps>(
         <input
           type={showPW ? "text" : "password"}
           className={cn(
-            "flex w-full bg-background pl-1 text-base ring-offset-background file:bg-transparent file:text-base file:font-medium placeholder:text-muted-foreground focus-visible:outline-none disabled:opacity-50",
+            "flex grow bg-background pl-1 text-base ring-offset-background file:bg-transparent file:text-base file:font-medium placeholder:text-muted-foreground focus-visible:outline-none disabled:opacity-50",
             className,
           )}
           ref={ref}
           {...props}
         />
-        <CheckPWIcon isShow={showPW} onChange={handleShowPW} />
+        {!doubleCheck && (
+          <CheckPWIcon isShow={showPW} onChange={handleShowPW} />
+        )}
       </div>
     );
   },

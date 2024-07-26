@@ -23,7 +23,7 @@ const PWInputField = React.forwardRef<HTMLInputElement, PWInputFieldProps>(
         <input
           type={showPW ? "text" : "password"}
           className={cn(
-            "flex w-full bg-background pl-1 text-base ring-offset-background file:bg-transparent file:text-base file:font-medium placeholder:text-muted-foreground focus-visible:outline-none disabled:opacity-50",
+            "flex grow bg-background pl-1 text-base ring-offset-background file:bg-transparent file:text-base file:font-medium placeholder:text-muted-foreground focus-visible:outline-none disabled:opacity-50",
             className,
           )}
           ref={ref}
