@@ -29,6 +29,13 @@ const SignUp = () => {
 
   const handleOption1Change = (event: React.ChangeEvent<HTMLInputElement>) => {
     setUserOption1(event.target.value);
+    if (event.target.value === "") {
+      setErrorMent(prev => ({
+        ...prev,
+        option1: "",
+      }));
+      return;
+    }
     //TODO: 이메일 인증 체크하는 api 연결
     setIsOption1Pass(true);
   };
@@ -82,7 +89,7 @@ const SignUp = () => {
   };
 
   return (
-    <>
+    <main className="flex h-full flex-col">
       <header className="sticky left-0 top-0 z-10 bg-white py-2">
         <Nav backLink="/login" NavTitle="회원가입" />
       </header>
@@ -133,7 +140,7 @@ const SignUp = () => {
         </main>
         <footer></footer>
       </main>
-    </>
+    </main>
   );
 };
 
