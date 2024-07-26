@@ -3,9 +3,13 @@ import { MailInputField } from "./_components/MailInputField";
 import Nav from "@/components/Nav";
 import ErrorMentBox from "./_components/ErrorMentBox";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { Button } from "@ui/components/ui/button";
+import { useNavigate } from "@/router";
 
 const SignUp = () => {
+  const navigate = useNavigate();
+
   const Regex1 = /^(?=.*[A-Za-z])(?=.*[0-9!@#$%^&*(),.?":{}|<>])/;
   const Regex2 = /^(?=.*[0-9])(?=.*[!@#$%^&*(),.?":{}|<>])(?=.*[A-Za-z])/;
   const CommonRegex = /[A-Za-z0-9!@#$%^&*(),.?":{}|<>]{6,20}$/;
@@ -20,6 +24,12 @@ const SignUp = () => {
   const [isOption1Pass, setIsOption1Pass] = useState(false);
   const [isOption2Pass, setIsOption2Pass] = useState(false);
   const [isCheckOption2Pass, setIsCheckOption2Pass] = useState(false);
+
+  const [AllPass, setAllPass] = useState(false);
+
+  useEffect(() => {
+    setAllPass(isOption1Pass && isOption2Pass && isCheckOption2Pass);
+  }, [isOption1Pass, isOption2Pass, isCheckOption2Pass]);
 
   const [errorMent, setErrorMent] = useState<{
     option1: string;
@@ -92,8 +102,8 @@ const SignUp = () => {
       <header className="sticky left-0 top-0 z-10 bg-white py-2">
         <Nav backLink="/login" NavTitle="회원가입" />
       </header>
-      <main className="flex h-full flex-col items-center justify-start gap-10 px-4">
-        <main className="flex w-full flex-col gap-16 pt-5">
+      <main className="flex h-full flex-col items-center justify-between gap-10 px-4">
+        <main className="flex w-full grow flex-col gap-12 pt-14">
           <div className="flex w-full flex-col gap-[7px]">
             <div className="pl-[2px] text-xl font-bold">이메일</div>
             <div className="flex flex-col gap-[10px]">
@@ -134,7 +144,26 @@ const SignUp = () => {
             </div>
           </div>
         </main>
-        <footer></footer>
+        <footer className="flex w-full flex-col gap-6 pb-7">
+          <Button
+            variant={AllPass ? "brand" : "outline"}
+            disabled={!AllPass}
+            className="w-full text-xl font-semibold sm:w-80"
+            onClick={() => navigate("/initial-quiz", { replace: true })}
+          >
+            가입하기
+          </Button>
+          <div className="flex justify-center gap-1 text-center text-[13px]">
+            <p>이미 회원이신가요?</p>
+            <p
+              className="text-brand underline"
+              onClick={() => navigate("/login", { replace: true })}
+            >
+              로그인
+            </p>
+            <p>하기</p>
+          </div>
+        </footer>
       </main>
     </main>
   );
