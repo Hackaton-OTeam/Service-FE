@@ -1,6 +1,6 @@
 import Logo from "@/components/Logo";
-import { MailInputField } from "@/pages/login/components/MailInputField";
-import { PWInputField } from "@/pages/login/components/PWInputField";
+import { MailInputField } from "@/pages/login/_components/MailInputField";
+import { PWInputField } from "@/pages/login/_components/PWInputField";
 import { Link, useNavigate } from "@/router";
 import { Button } from "@ui/components/ui/button";
 import { useToast } from "@ui/components/ui/use-toast";

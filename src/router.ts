@@ -3,15 +3,7 @@
 
 import { components, hooks, utils } from "@generouted/react-router/client";
 
-export type Path =
-  | `/`
-  | `/home`
-  | `/login`
-  | `/login/components/MailInputField`
-  | `/login/components/PWInputField`
-  | `/signup`
-  | `/signup/components/MailInputField`
-  | `/signup/components/PWInputField`;
+export type Path = `/` | `/home` | `/login` | `/signup`;
 
 export type Params = {};
 

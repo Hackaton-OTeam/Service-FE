@@ -1,5 +1,5 @@
-import { PWInputField } from "./components/PWInputField";
-import { MailInputField } from "./components/MailInputField";
+import { PWInputField } from "./_components/PWInputField";
+import { MailInputField } from "./_components/MailInputField";
 import Nav from "@/components/Nav";
 
 const SignUp = () => {
