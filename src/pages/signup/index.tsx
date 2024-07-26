@@ -18,6 +18,7 @@ const SignUp = () => {
   const [userOption2, setUserOption2] = useState("");
   const [checkOption2, setCheckOption2] = useState("");
   const [isOption1Pass, setIsOption1Pass] = useState(false);
+  const [isOption2Pass, setIsOption2Pass] = useState(false);
   const [isCheckOption2Pass, setIsCheckOption2Pass] = useState(false);
 
   const [errorMent, setErrorMent] = useState<{
@@ -40,7 +41,14 @@ const SignUp = () => {
         option2:
           "영문 대문자와 소문자, 특수문자 중 2가지 이상을 조합하여 6~20자로 입력해주세요.",
       }));
+      setIsOption2Pass(false);
       return;
+    } else {
+      setErrorMent(prev => ({
+        ...prev,
+        option2: "",
+      }));
+      setIsOption2Pass(true);
     }
   };
 
@@ -48,7 +56,11 @@ const SignUp = () => {
     event: React.ChangeEvent<HTMLInputElement>,
   ) => {
     setCheckOption2(event.target.value);
-    if (userOption2 === event.target.value) {
+    if (
+      userOption2 === event.target.value &&
+      userOption2 !== "" &&
+      event.target.value !== ""
+    ) {
       setErrorMent(prev => ({
         ...prev,
         checkOption2: "비밀번호가 일치합니다.",
@@ -98,6 +110,7 @@ const SignUp = () => {
                   placeholder="비밀번호"
                   value={userOption2}
                   onChange={handleOption2Change}
+                  isPass={isOption2Pass}
                   autoComplete="off"
                 />
                 <ErrorMentBox ment={errorMent.option2} />
