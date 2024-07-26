@@ -17,7 +17,7 @@ const Nav = (props: NavProps) => {
   return (
     <nav
       className={cn(
-        "my-2 flex h-10 w-full self-stretch px-4",
+        "flex h-10 w-full self-stretch px-4",
         !backLink ? "justify-between" : "justify-start",
       )}
     >

@@ -1,6 +1,8 @@
 import { PWInputField } from "./_components/PWInputField";
 import { MailInputField } from "./_components/MailInputField";
 import Nav from "@/components/Nav";
+import ErrorMentBox from "./_components/ErrorMentBox";
+
 import { useState } from "react";
 
 const SignUp = () => {
@@ -16,7 +18,7 @@ const SignUp = () => {
   const [userOption2, setUserOption2] = useState("");
   const [checkOption2, setCheckOption2] = useState("");
   const [isOption1Pass, setIsOption1Pass] = useState(false);
-  const [isOption2Pass, setIsOption2Pass] = useState(false);
+  const [isCheckOption2Pass, setIsCheckOption2Pass] = useState(false);
 
   const [errorMent, setErrorMent] = useState<{
     option1: string;
@@ -46,19 +48,19 @@ const SignUp = () => {
     event: React.ChangeEvent<HTMLInputElement>,
   ) => {
     setCheckOption2(event.target.value);
-    if (userOption2 === checkOption2) {
+    if (userOption2 === event.target.value) {
       setErrorMent(prev => ({
         ...prev,
         checkOption2: "비밀번호가 일치합니다.",
       }));
-      setIsOption2Pass(true);
+      setIsCheckOption2Pass(true);
       return;
     } else {
       setErrorMent(prev => ({
         ...prev,
         checkOption2: "비밀번호가 일치하지 않습니다.",
       }));
-      setIsOption2Pass(false);
+      setIsCheckOption2Pass(false);
       return;
     }
   };
@@ -69,7 +71,7 @@ const SignUp = () => {
 
   return (
     <>
-      <header className="sticky left-0 top-0 z-10 bg-white">
+      <header className="sticky left-0 top-0 z-10 bg-white py-2">
         <Nav backLink="/login" NavTitle="회원가입" />
       </header>
       <main className="flex h-full flex-col items-center justify-start gap-10 px-4">
@@ -85,7 +87,7 @@ const SignUp = () => {
                   autoComplete="off"
                 />
               </div>
-              <div>{errorMent.option1}</div>
+              <ErrorMentBox ment={errorMent.option1} isPass={isOption1Pass} />
             </div>
           </div>
           <div className="flex w-full flex-col gap-[7px]">
@@ -98,7 +100,7 @@ const SignUp = () => {
                   onChange={handleOption2Change}
                   autoComplete="off"
                 />
-                <div>{errorMent.option2}</div>
+                <ErrorMentBox ment={errorMent.option2} />
               </div>
               <div className="flex flex-col gap-1">
                 <PWInputField
@@ -108,7 +110,10 @@ const SignUp = () => {
                   onChange={handleCheckOption2Change}
                   autoComplete="off"
                 />
-                <div>{errorMent.checkOption2}</div>
+                <ErrorMentBox
+                  ment={errorMent.checkOption2}
+                  isPass={isCheckOption2Pass}
+                />
               </div>
             </div>
           </div>
