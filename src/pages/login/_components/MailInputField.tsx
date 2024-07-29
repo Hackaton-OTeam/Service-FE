@@ -9,7 +9,7 @@ export interface MailInputFieldProps
 const MailInputField = React.forwardRef<HTMLInputElement, MailInputFieldProps>(
   ({ className, ...props }, ref) => {
     return (
-      <div className="flex h-12 items-center justify-between gap-[11px] rounded-lg border border-input px-5 py-4">
+      <div className="flex h-12 items-center justify-between gap-[11px] rounded-lg border border-brandGray border-input px-5 py-4">
         <MailIcon />
         <input
           type="email"

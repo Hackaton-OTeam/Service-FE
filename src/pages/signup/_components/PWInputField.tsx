@@ -15,7 +15,7 @@ export interface PWInputFieldProps
 const PWInputField = React.forwardRef<HTMLInputElement, PWInputFieldProps>(
   ({ className, doubleCheck, value, isPass, ...props }, ref) => {
     return (
-      <div className="flex h-12 items-center justify-between gap-[11px] rounded-lg border border-input px-5 py-4">
+      <div className="flex h-12 items-center justify-between gap-[11px] rounded-lg border border-brandGray border-input px-5 py-4">
         <PWIcon />
         <input
           type={"password"}

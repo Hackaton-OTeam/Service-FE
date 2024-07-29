@@ -15,9 +15,9 @@ import { useState } from "react";
 import { useInitialSettingForm } from "@/hooks/useInitialSettingForm";
 
 const NickNameActivity: ActivityComponentType = () => {
-  const { form } = useInitialSettingForm;
+  const { form } = useInitialSettingForm();
 
-  const NowStep = 1;
+  const step = 1;
 
   const [nickname, setNickName] = useState("");
   const [isPass, setIsPass] = useState(false);
@@ -30,6 +30,7 @@ const NickNameActivity: ActivityComponentType = () => {
       setErrorMent("닉네임을 입력해주세요.");
     } else {
       setIsPass(true);
+      form.setValue("nickname", nickname);
       setErrorMent("사용 가능한 닉네임 입니다.");
     }
   };
@@ -39,7 +40,7 @@ const NickNameActivity: ActivityComponentType = () => {
       <Activity>
         <ActivityContent>
           <ActivityHeader>
-            <NumberIcon number={1} />
+            <NumberIcon number={step} />
             <h1 className="text-2xl font-bold">뭐라고 불러드릴까요?</h1>
           </ActivityHeader>
           <section className="flex grow flex-col gap-[10px]">
@@ -51,7 +52,7 @@ const NickNameActivity: ActivityComponentType = () => {
               activityName={"CategoryActivity" as never}
               disabled={!isPass}
               params={{
-                step: NowStep + 1,
+                step: step + 1,
                 form,
               }}
             ></NextStepButton>
