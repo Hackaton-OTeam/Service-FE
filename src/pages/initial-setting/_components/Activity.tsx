@@ -14,7 +14,7 @@ const ActivityHeader = ({
   return (
     <header
       className={cn(
-        "container mt-10 flex w-full flex-col justify-end gap-2",
+        "mt-10 flex w-full flex-col justify-end gap-[10px]",
         className,
       )}
       {...props}
@@ -29,10 +29,10 @@ const ActivityContent = ({
   ...props
 }: React.HTMLAttributes<HTMLDivElement>) => {
   return (
-    <main className="flex h-full grow flex-col items-center">
+    <main className="flex h-full grow flex-col items-center px-4">
       <section
         className={cn(
-          "flex w-full grow flex-col justify-center gap-7",
+          "flex w-full grow flex-col justify-center gap-3 pb-10",
           className,
         )}
         {...props}

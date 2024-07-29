@@ -6,10 +6,8 @@ export type FormSchemaType = z.infer<typeof FormSchema>;
 export type FormType = UseFormReturn<FormSchemaType, unknown, undefined>;
 
 export const FormSchema = z.object({
-  nickname: z.string().min(1, "닉네임을 입력해주세요 "),
-  category: z
-    .array(z.string())
-    .min(1, "최소 하나의 카테고리를 선택해야 합니다."),
+  nickname: z.string(),
+  category: z.array(z.string()),
 });
 
 //TODO: 나중에 api 연결해야함.

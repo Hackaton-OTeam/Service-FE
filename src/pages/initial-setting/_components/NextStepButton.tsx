@@ -10,7 +10,6 @@ interface NextStepButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   activityName: never;
   disabled: boolean;
-  number?: number;
   params?: {
     form: FormType;
   } & Record<string, unknown>;
@@ -18,7 +17,7 @@ interface NextStepButtonProps
 }
 
 const NextStepButton = (props: NextStepButtonProps) => {
-  const { activityName, disabled, params, number, isLoading, ...rest } = props;
+  const { activityName, disabled, params, isLoading, ...rest } = props;
   const { push } = useInitialSettingFlow();
   const navigate = useNavigate();
 
@@ -32,23 +31,18 @@ const NextStepButton = (props: NextStepButtonProps) => {
       return;
     }
 
-    const updatedParams = {
-      ...params,
-      number: number ? number + 1 : 1, // Increment the number or default to 1
-    };
-
-    push(activityName, updatedParams);
-    // push(activityName, params || {});
+    push(activityName, params || {});
   };
 
   return (
     <Button
-      className="hover:bg-brandHover h-16 w-full rounded-none bg-brand text-base font-extrabold"
+      variant={disabled ? "outline" : "brand"}
+      className="w-full text-xl font-semibold"
       onClick={handleClick}
       disabled={disabled || isLoading}
       {...rest}
     >
-      {isLoading ? <LoaderCircleIcon className="animate-spin" /> : "다음으로"}
+      {isLoading ? <LoaderCircleIcon className="animate-spin" /> : "다음"}
     </Button>
   );
 };
