@@ -9,6 +9,7 @@ import {
 
 import { AppScreen } from "@stackflow/plugin-basic-ui";
 import NextStepButton from "./NextStepButton";
+import BackIcon from "@/components/BackIcon";
 
 interface CategoryParams extends ActivityParams {}
 
@@ -18,7 +19,16 @@ const CategoryActivity: ActivityComponentType<CategoryParams> = ({
   const { form } = params;
 
   return (
-    <AppScreen appBar={{ border: false, height: "56px" }}>
+    <AppScreen
+      appBar={{
+        border: false,
+        height: "56px",
+        backButton: {
+          renderIcon: () => <BackIcon />,
+          ariaLabel: "Go Back",
+        },
+      }}
+    >
       <Activity>
         <ActivityContent>
           <section className="grow">

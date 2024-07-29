@@ -14,7 +14,7 @@ import {
   FormMessage,
 } from "@ui/components/ui/form";
 
-import { AppScreen, IconBack } from "@stackflow/plugin-basic-ui";
+import { AppScreen } from "@stackflow/plugin-basic-ui";
 import NextStepButton from "./NextStepButton";
 import { Input } from "@ui/components/ui/input";
 
@@ -31,7 +31,6 @@ const NickNameActivity: ActivityComponentType<NickNameParams> = ({
         <ActivityContent>
           <section className="grow">
             <div>지금은 nickname</div>
-            <IconBack />
           </section>
           <ActivityFooter>
             <NextStepButton
