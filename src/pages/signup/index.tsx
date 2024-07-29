@@ -23,6 +23,7 @@ const SignUp = () => {
     handleOption1Change,
     handleOption2Change,
     handleCheckOption2Change,
+    handleUnique,
     handleSignup,
   } = useSignUp();
 
@@ -46,6 +47,7 @@ const SignUp = () => {
                 <Button
                   variant={isOption1Pass ? "brand" : "outline"}
                   className="h-full grow rounded-[9px]"
+                  onClick={handleUnique}
                 >
                   중복 확인
                 </Button>

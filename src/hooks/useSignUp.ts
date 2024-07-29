@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 
+//TODO: 이메일 체크 api 연결
+
 export const useSignUp = () => {
   const UserOption1Regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
   const Option2_Regex1 = /^(?=.*[A-Za-z])(?=.*[0-9!@#$%^&*(),.?":{}|<>])/;
@@ -21,10 +23,11 @@ export const useSignUp = () => {
 
   const [AllPass, setAllPass] = useState(false);
 
-  //TODO: 나중에 여기에 isOption1Unique도 같이 넣어서 비교해야함.
   useEffect(() => {
-    setAllPass(isOption1Pass && isOption2Pass && isCheckOption2Pass);
-  }, [isOption1Pass, isOption2Pass, isCheckOption2Pass]);
+    setAllPass(
+      isOption1Pass && isOption2Pass && isCheckOption2Pass && isOption1Unique,
+    );
+  }, [isOption1Pass, isOption2Pass, isCheckOption2Pass, isOption1Unique]);
 
   const [errorMent, setErrorMent] = useState<{
     option1: string;
@@ -42,6 +45,7 @@ export const useSignUp = () => {
         option1: "올바른 이메일 형식을 입력해주세요",
       }));
       setIsOption1Pass(false);
+      setIsOption1Unique(false);
       return;
     } else {
       setErrorMent(prev => ({
@@ -49,9 +53,9 @@ export const useSignUp = () => {
         option1: "",
       }));
       setIsOption1Pass(true);
+
+      //TODO: 이메일 인증 체크하는 api 연결
     }
-    //TODO: 이메일 인증 체크하는 api 연결
-    setIsOption1Unique(true);
   };
 
   const handleOption2Change = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -98,6 +102,11 @@ export const useSignUp = () => {
     }
   };
 
+  const handleUnique = () => {
+    //TODO: 이메일 체크 api 연결
+    setIsOption1Unique(true);
+  };
+
   const handleSignup = () => {
     setErrorMent({ option1: "", option2: "" });
   };
@@ -115,6 +124,7 @@ export const useSignUp = () => {
     handleOption1Change,
     handleOption2Change,
     handleCheckOption2Change,
+    handleUnique,
     handleSignup,
   };
 };

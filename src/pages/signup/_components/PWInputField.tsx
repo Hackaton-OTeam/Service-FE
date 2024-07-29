@@ -12,7 +12,6 @@ export interface PWInputFieldProps
   value: string;
 }
 
-//TODO: 비밀번호 정규식 확인 후 사용가능 여부 알려주는 아이콘으로 수정
 const PWInputField = React.forwardRef<HTMLInputElement, PWInputFieldProps>(
   ({ className, doubleCheck, value, isPass, ...props }, ref) => {
     return (
