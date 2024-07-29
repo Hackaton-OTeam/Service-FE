@@ -38,15 +38,17 @@ const SignUp = () => {
             <div className="pl-[2px] text-xl font-bold">이메일</div>
             <div className="flex flex-col gap-[10px]">
               <div className="flex gap-[10px]">
-                <MailInputField
-                  placeholder="이메일"
-                  value={userOption1}
-                  onChange={handleOption1Change}
-                  autoComplete="off"
-                />
+                <div className="w-full">
+                  <MailInputField
+                    placeholder="이메일"
+                    value={userOption1}
+                    onChange={handleOption1Change}
+                    autoComplete="off"
+                  />
+                </div>
                 <Button
                   variant={isOption1Pass ? "brand" : "outline"}
-                  className="h-full grow rounded-[9px]"
+                  className="h-full w-fit rounded-[9px]"
                   onClick={handleUnique}
                 >
                   중복 확인
@@ -86,7 +88,7 @@ const SignUp = () => {
             variant={AllPass ? "brand" : "outline"}
             disabled={!AllPass}
             className="w-full text-xl font-semibold"
-            onClick={() => navigate("/initial-quiz", { replace: true })}
+            onClick={() => navigate("/initial-setting", { replace: true })}
           >
             가입하기
           </Button>

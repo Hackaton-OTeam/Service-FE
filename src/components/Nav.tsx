@@ -30,7 +30,7 @@ const Nav = (props: NavProps) => {
         <>
           <div className="flex items-center">
             <Link to={backLink}>
-              <BackIcon />
+                <BackIcon />
             </Link>
           </div>
           <div className="grow text-center text-2xl font-bold leading-10">
