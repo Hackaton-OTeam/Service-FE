@@ -1,5 +1,5 @@
 interface NumberIconProps {
-  number: string;
+  number: number;
 }
 
 const NumberIcon = (props: NumberIconProps) => {

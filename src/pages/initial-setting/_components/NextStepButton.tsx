@@ -10,6 +10,7 @@ interface NextStepButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   activityName: never;
   disabled: boolean;
+  number?: number;
   params?: {
     form: FormType;
   } & Record<string, unknown>;
@@ -17,7 +18,7 @@ interface NextStepButtonProps
 }
 
 const NextStepButton = (props: NextStepButtonProps) => {
-  const { activityName, disabled, params, isLoading, ...rest } = props;
+  const { activityName, disabled, params, number, isLoading, ...rest } = props;
   const { push } = useInitialSettingFlow();
   const navigate = useNavigate();
 
@@ -30,7 +31,14 @@ const NextStepButton = (props: NextStepButtonProps) => {
       });
       return;
     }
-    push(activityName, params || {});
+
+    const updatedParams = {
+      ...params,
+      number: number ? number + 1 : 1, // Increment the number or default to 1
+    };
+
+    push(activityName, updatedParams);
+    // push(activityName, params || {});
   };
 
   return (
