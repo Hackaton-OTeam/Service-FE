@@ -12,7 +12,7 @@ export const useMutationLogin = () => {
     mutationFn: ({ userEmail, userPassword }: LoginRequestParams) =>
       login({ userEmail, userPassword }),
     onSuccess: ({ response }: LoginResponse) => {
-      if (response === "success") {
+      if (response !== "fail") {
         navigate("/home", { replace: true });
         return;
       }
