@@ -6,9 +6,12 @@ import ErrorMentBox from "./_components/ErrorMentBox";
 import { useEffect, useState } from "react";
 import { Button } from "@ui/components/ui/button";
 import { useNavigate } from "@/router";
+import { useMutationCheckEmail } from "@/hooks/mutation/useMutationCheckEmail";
 
 const SignUp = () => {
   const navigate = useNavigate();
+
+  const mutation = useMutationCheckEmail();
 
   const Regex1 = /^(?=.*[A-Za-z])(?=.*[0-9!@#$%^&*(),.?":{}|<>])/;
   const Regex2 = /^(?=.*[0-9])(?=.*[!@#$%^&*(),.?":{}|<>])(?=.*[A-Za-z])/;
@@ -41,12 +44,34 @@ const SignUp = () => {
     if (event.target.value === "") {
       setErrorMent(prev => ({
         ...prev,
-        option1: "dsafsdfdf",
+        option1: "",
       }));
+      setIsOption1Pass(false);
       return;
     }
     //TODO: 이메일 인증 체크하는 api 연결
-    setIsOption1Pass(true);
+    mutation.mutate(
+      { userEmail: event.target.value },
+      {
+        onSuccess: response => {
+          if (response === "ok") {
+            setErrorMent(prev => ({
+              ...prev,
+              option1: "사용 가능한 이메일 입니다.",
+            }));
+            setIsOption1Pass(true);
+            return;
+          } else {
+            setErrorMent(prev => ({
+              ...prev,
+              option1: "이미 등록된 이메일 입니다.",
+            }));
+            setIsOption1Pass(false);
+            return;
+          }
+        },
+      },
+    );
   };
 
   const handleOption2Change = (event: React.ChangeEvent<HTMLInputElement>) => {
