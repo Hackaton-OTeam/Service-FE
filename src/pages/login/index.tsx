@@ -86,13 +86,13 @@ const Login = () => {
       <footer className="flex w-full flex-col items-center gap-4">
         <Button
           variant="brand"
-          className="w-full text-xl font-semibold sm:w-80"
+          className="w-full text-xl font-semibold"
           onClick={handleLogin}
         >
           로그인
         </Button>
 
-        <Link to="/signup" className="w-full sm:w-80">
+        <Link to="/signup" className="w-full">
           <Button variant="outline" className="w-full text-xl font-semibold">
             회원가입
           </Button>

@@ -1,23 +1,25 @@
 import HomeImage from "@/assets/HomeImage.png";
 import HomeActiveImage from "@/assets/HomeActiveImage.png";
+import { Link } from "react-router-dom";
 
 interface HomeIconProps {
   isActive: boolean;
-  onChange: () => void;
 }
 
 const HomeIcon = (props: HomeIconProps) => {
-  const { isActive, onChange } = props;
+  const { isActive } = props;
 
   return (
-    <div onClick={onChange} className="flex items-center justify-center">
-      <img
-        src={isActive ? HomeActiveImage : HomeImage}
-        className="h-11 w-auto"
-        loading="lazy"
-        alt="HomeIcon"
-      />
-    </div>
+    <Link to="/home">
+      <div className="flex items-center justify-center">
+        <img
+          src={isActive ? HomeActiveImage : HomeImage}
+          className="h-11 w-auto"
+          loading="lazy"
+          alt="HomeIcon"
+        />
+      </div>
+    </Link>
   );
 };
 

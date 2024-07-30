@@ -25,10 +25,10 @@ const Nav = (props: NavProps) => {
           )}
         </>
       ) : (
-        <>
+        <div className="flex w-full items-center px-2">
           <Logo size="12%" className="mr-auto" />
           <LevelIcon />
-        </>
+        </div>
       )}
     </nav>
   );
