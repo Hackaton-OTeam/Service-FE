@@ -2,7 +2,6 @@ import { stackflow } from "@stackflow/react";
 import { basicRendererPlugin } from "@stackflow/plugin-renderer-basic";
 import { basicUIPlugin } from "@stackflow/plugin-basic-ui";
 
-import "@stackflow/plugin-basic-ui/index.css";
 import NickNameActivity from "@/pages/initial-setting/_components/NickNameActivity";
 import CategoryActivity from "@/pages/initial-setting/_components/CategoryActivity";
 import CompleteActivity from "@/pages/initial-setting/_components/CompleteActivity";
@@ -26,4 +25,3 @@ export const { Stack, activities } = stackflow({
 });
 
 export type TypeActivities = typeof activities;
-

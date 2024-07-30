@@ -1,4 +1,5 @@
 import { ActivityComponentType } from "@stackflow/react";
+
 import {
   Activity,
   ActivityContent,
@@ -30,7 +31,7 @@ const NickNameActivity: ActivityComponentType = () => {
       setErrorMent("닉네임을 입력해주세요.");
     } else {
       setIsPass(true);
-      form.setValue("nickname", nickname);
+      form.setValue("nickname", event.target.value);
       setErrorMent("사용 가능한 닉네임 입니다.");
     }
   };

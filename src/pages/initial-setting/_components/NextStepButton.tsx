@@ -23,7 +23,7 @@ const NextStepButton = (props: NextStepButtonProps) => {
 
   const handleClick = async () => {
     if (activityName === "CompleteActivity") {
-      // TODO:api 연결
+      // TODO: API 연결 및 다른 작업
     } else if (activityName === "MainActivity") {
       navigate("/home", {
         replace: true,

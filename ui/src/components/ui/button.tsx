@@ -19,8 +19,9 @@ const buttonVariants = cva(
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
         brand: "bg-brand text-white rounded-2xl sm:80 hover:bg-brand/80",
-        semioutline:
-          "border border-input border-brandGray text-brandInput rounded-[39px] bg-background hover:bg-accent hover:text-accent-foreground",
+        category_outline:
+          "border border-input border-brandGray text-brandInput rounded-[39px] bg-background",
+        category_brand: "bg-brand text-white rounded-[39px]",
       },
       size: {
         default: "h-14 px-4 py-2",

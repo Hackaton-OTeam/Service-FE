@@ -11,13 +11,7 @@ import { AppScreen } from "@stackflow/plugin-basic-ui";
 import NextStepButton from "./NextStepButton";
 import BackIcon from "@/components/BackIcon";
 
-interface CompleteParams extends ActivityParams {}
-
-const CompleteActivity: ActivityComponentType<CompleteParams> = ({
-  params,
-}) => {
-  const { form } = params;
-
+const CompleteActivity: ActivityComponentType = () => {
   return (
     <AppScreen
       appBar={{

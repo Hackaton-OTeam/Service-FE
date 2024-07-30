@@ -14,7 +14,7 @@ const ActivityHeader = ({
   return (
     <header
       className={cn(
-        "mt-10 flex w-full flex-col justify-end gap-[10px]",
+        "mt-14 flex w-full flex-col justify-end gap-[10px]",
         className,
       )}
       {...props}
