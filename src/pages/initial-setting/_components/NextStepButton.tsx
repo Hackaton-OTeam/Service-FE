@@ -4,7 +4,7 @@ import { Button } from "@ui/components/ui/button";
 import { useMyFlow } from "@/utils/useMyFlow";
 
 import { useNavigate } from "@/router";
-import { FormType } from "@/hooks/useStackForm";
+import { FormType, useStackForm } from "@/hooks/useStackForm";
 
 interface NextStepButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {
@@ -20,12 +20,17 @@ interface NextStepButtonProps
 const NextStepButton = (props: NextStepButtonProps) => {
   const { activityName, disabled, params, isLoading, ...rest } = props;
   const { push } = useMyFlow();
+  const { onSubmit } = useStackForm();
   const navigate = useNavigate();
 
   const handleClick = async () => {
     if (activityName === "CompleteActivity" && params?.form) {
       // TODO: API 연결 및 다른 작업
-      console.log(params.form.control._formValues);
+
+      const result = await onSubmit(params?.form.getValues());
+      if (result === "fail") {
+        return;
+      }
     } else if (activityName === "MainActivity") {
       navigate("/home", {
         replace: true,
