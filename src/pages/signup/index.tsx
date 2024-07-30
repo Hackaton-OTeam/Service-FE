@@ -88,7 +88,7 @@ const SignUp = () => {
             variant={AllPass ? "brand" : "outline"}
             disabled={!AllPass}
             className="w-full text-xl font-semibold"
-            onClick={() => navigate("/initial-setting", { replace: true })}
+            onClick={handleSignup}
           >
             가입하기
           </Button>

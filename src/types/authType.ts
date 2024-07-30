@@ -6,3 +6,5 @@ export type LoginRequestParams = {
 export type CheckEmailParams = {
   userEmail: string;
 };
+
+export type SignUpRequestParams = LoginRequestParams;

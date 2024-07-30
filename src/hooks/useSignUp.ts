@@ -1,10 +1,12 @@
 import { useMutationCheckEmail } from "@/hooks/mutation/useMutationCheckEmail";
+import { useMutationSignUp } from "@/hooks/mutation/useMutationSignUp";
 import { useEffect, useState } from "react";
 
 //TODO: 이메일 체크 api 연결
 
 export const useSignUp = () => {
   const mutation = useMutationCheckEmail();
+  const signupMutation = useMutationSignUp();
 
   const UserOption1Regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
   const Option2_Regex1 = /^(?=.*[A-Za-z])(?=.*[0-9!@#$%^&*(),.?":{}|<>])/;
@@ -126,7 +128,20 @@ export const useSignUp = () => {
   };
 
   const handleSignup = () => {
-    setErrorMent({ option1: "", option2: "" });
+    signupMutation.mutate(
+      {
+        userEmail: userOption1,
+        userPassword: userOption2,
+      },
+      {
+        onSuccess: response => {
+          if (response === "success") {
+            setErrorMent({ option1: "", option2: "" });
+            return;
+          }
+        },
+      },
+    );
   };
 
   return {
