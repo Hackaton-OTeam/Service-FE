@@ -26,7 +26,6 @@ const NextStepButton = (props: NextStepButtonProps) => {
   const handleClick = async () => {
     if (activityName === "CompleteActivity" && params?.form) {
       // TODO: API 연결 및 다른 작업
-
       const result = await onSubmit(params?.form.getValues());
       if (result === "fail") {
         return;

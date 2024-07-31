@@ -27,8 +27,10 @@ export const useStackForm = () => {
 
   const onSubmit = async (data: FormSchemaType) => {
     const { nickname, categories } = data;
+    const userEmail = localStorage.getItem("userEmail");
 
     const result = await mutateAsync({
+      userEmail: userEmail!,
       userName: nickname,
       categories: categories,
     });

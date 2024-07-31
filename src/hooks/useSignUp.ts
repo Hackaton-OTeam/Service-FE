@@ -135,7 +135,8 @@ export const useSignUp = () => {
       },
       {
         onSuccess: response => {
-          if (response === "success") {
+          if (response !== "fail") {
+            localStorage.setItem("userEmail", response);
             setErrorMent({ option1: "", option2: "" });
             return;
           }
