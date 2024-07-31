@@ -1,6 +1,6 @@
-import BookMarkIcon from "@/components/BookMarkIcon";
-import HomeIcon from "@/components/HomeIcon";
-import MyPageIcon from "@/components/MyPageIcon";
+import BookMarkIcon from "@/components/Icons/BookMarkIcon";
+import HomeIcon from "@/components/Icons/HomeIcon";
+import MyPageIcon from "@/components/Icons/MyPageIcon";
 import { useLocation } from "react-router-dom";
 
 const BottomNav = () => {
