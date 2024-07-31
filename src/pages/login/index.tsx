@@ -1,11 +1,12 @@
 import Logo from "@/components/Logo";
 import { MailInputField } from "@/pages/login/_components/MailInputField";
 import { PWInputField } from "@/pages/login/_components/PWInputField";
-import { Link, useNavigate } from "@/router";
+import { Link } from "@/router";
 import { Button } from "@ui/components/ui/button";
 import { useToast } from "@ui/components/ui/use-toast";
 import { ChangeEvent, useState } from "react";
 import { useMutationLogin } from "@/hooks/mutation/useMutationLogin";
+import LoadingButton from "@/components/LoadingButton";
 
 const Login = () => {
   const { toast } = useToast();
@@ -84,13 +85,11 @@ const Login = () => {
         />
       </main>
       <footer className="flex w-full flex-col items-center gap-4">
-        <Button
-          variant="brand"
-          className="w-full text-xl font-semibold"
-          onClick={handleLogin}
-        >
-          로그인
-        </Button>
+        <LoadingButton
+          isLoading={mutation.isPending}
+          handleClick={handleLogin}
+          buttonText="로그인"
+        />
 
         <Link to="/signup" className="w-full">
           <Button variant="outline" className="w-full text-xl font-semibold">

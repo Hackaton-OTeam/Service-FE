@@ -2,10 +2,8 @@ import { useMutationCheckEmail } from "@/hooks/mutation/useMutationCheckEmail";
 import { useMutationSignUp } from "@/hooks/mutation/useMutationSignUp";
 import { useEffect, useState } from "react";
 
-//TODO: 이메일 체크 api 연결
-
 export const useSignUp = () => {
-  const mutation = useMutationCheckEmail();
+  const checkmailMutation = useMutationCheckEmail();
   const signupMutation = useMutationSignUp();
 
   const UserOption1Regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
@@ -105,7 +103,7 @@ export const useSignUp = () => {
   };
 
   const handleUnique = () => {
-    mutation.mutate(
+    checkmailMutation.mutate(
       { userEmail: userOption1 },
       {
         onSuccess: response => {
@@ -146,6 +144,7 @@ export const useSignUp = () => {
   };
 
   return {
+    signupMutation,
     userOption1,
     userOption2,
     checkOption2,

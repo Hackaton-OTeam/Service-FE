@@ -1,10 +1,8 @@
-import { LoaderCircleIcon } from "@ui/components/ui/icon";
-import { Button } from "@ui/components/ui/button";
-
 import { useMyFlow } from "@/utils/useMyFlow";
 
 import { useNavigate } from "@/router";
 import { FormType, useStackForm } from "@/hooks/useStackForm";
+import LoadingButton from "@/components/LoadingButton";
 
 interface NextStepButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {
@@ -17,7 +15,7 @@ interface NextStepButtonProps
 }
 
 const NextStepButton = (props: NextStepButtonProps) => {
-  const { activityName, disabled, params, ...rest } = props;
+  const { activityName, disabled, params } = props;
   const { push } = useMyFlow();
   const { onSubmit, isPending: isLoading } = useStackForm();
   const navigate = useNavigate();
@@ -42,15 +40,12 @@ const NextStepButton = (props: NextStepButtonProps) => {
   const buttonText = activityName === "MainActivity" ? "시작" : "다음";
 
   return (
-    <Button
-      variant={disabled ? "outline" : "brand"}
-      className="w-full text-xl font-semibold"
-      onClick={handleClick}
-      disabled={disabled || isLoading}
-      {...rest}
-    >
-      {isLoading ? <LoaderCircleIcon className="animate-spin" /> : buttonText}
-    </Button>
+    <LoadingButton
+      buttonText={buttonText}
+      disabled={disabled}
+      isLoading={isLoading}
+      handleClick={handleClick}
+    />
   );
 };
 
