@@ -88,6 +88,7 @@ const SecondStepActivity: ActivityComponentType<SecondParams> = ({
           </section>
           <ActivityFooter>
             <NextStepButton
+              isLoading
               activityName={"CompleteActivity" as never}
               disabled={!isPass}
               params={{
