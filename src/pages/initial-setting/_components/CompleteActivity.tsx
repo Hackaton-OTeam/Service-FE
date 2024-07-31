@@ -9,7 +9,7 @@ import NextStepButton from "@/pages/initial-setting/_components/NextStepButton";
 import { AppScreen } from "@stackflow/plugin-basic-ui";
 import { ActivityComponentType } from "@stackflow/react";
 import NumberIcon from "@/components/Icons/NumberIcon";
-import Characters from "@/components/Icons/Characters";
+import BlueCharacter from "@/components/character/BlueCharacter";
 
 type CompleteParams = {
   step: number;
@@ -61,7 +61,7 @@ const CompleteActivity: ActivityComponentType<CompleteParams> = ({
           </ActivityHeader>
           <section className="w-full grow">
             <div className="flex h-full items-center">
-              <Characters size={"90%"} />
+              <BlueCharacter size={"50%"} />
             </div>
           </section>
           <ActivityFooter>
