@@ -10,7 +10,7 @@ const MyPageIcon = (props: MyPageProps) => {
   const { isActive } = props;
 
   return (
-    <Link to="/mypage">
+    <Link to="mypage">
       <div className="flex items-center justify-center">
         <img
           src={isActive ? MyPageActiveImage : MyPageImage}

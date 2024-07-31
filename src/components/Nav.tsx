@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom";
+
 import Logo from "@/components/Logo";
-import BackIcon from "@/components/BackIcon";
 import LevelIcon from "@/components/Level";
+import BackIcon from "@/components/Icons/BackIcon";
 
 interface NavProps {
   backLink?: string;
