@@ -14,7 +14,7 @@ export type FormType = UseFormReturn<FormSchemaType, unknown, undefined>;
 
 //TODO: 나중에 api 연결해야함.
 export const useStackForm = () => {
-  const { mutateAsync } = useMutationInitialSetting();
+  const { mutateAsync, isPending } = useMutationInitialSetting();
 
   const form = useForm<FormSchemaType>({
     resolver: zodResolver(FormSchema),
@@ -38,5 +38,5 @@ export const useStackForm = () => {
     return result;
   };
 
-  return { form, onSubmit };
+  return { form, onSubmit, isPending };
 };

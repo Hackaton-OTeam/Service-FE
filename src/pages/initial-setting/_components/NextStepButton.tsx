@@ -14,13 +14,12 @@ interface NextStepButtonProps
     step: number;
     form?: FormType;
   } & Record<string, unknown>;
-  isLoading?: boolean;
 }
 
 const NextStepButton = (props: NextStepButtonProps) => {
-  const { activityName, disabled, params, isLoading, ...rest } = props;
+  const { activityName, disabled, params, ...rest } = props;
   const { push } = useMyFlow();
-  const { onSubmit } = useStackForm();
+  const { onSubmit, isPending: isLoading } = useStackForm();
   const navigate = useNavigate();
 
   const handleClick = async () => {
