@@ -13,6 +13,7 @@ export const useMutationSignUp = () => {
       signup({ userEmail, userPassword }),
     onSuccess: (response: string) => {
       if (response !== "fail") {
+        localStorage.setItem("userEmail", response);
         navigate("/initial-setting", { replace: true });
         return;
       }
