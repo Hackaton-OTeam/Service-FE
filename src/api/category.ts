@@ -10,7 +10,7 @@ export const getCategoryList = async () => {
 export const getCategoryLearningRate = async (categoryId: number) => {
   const userEmail = localStorage.getItem("userEmail");
   const { data } = await instance.get<CategoryLearningRateDTO>(
-    `/quiz/status?categoryId=${categoryId}&userEmail=${userEmail}`,
+    `/quiz/words-count?categoryId=${categoryId}&userEmail=${userEmail}`,
   );
   return data;
 };
