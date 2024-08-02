@@ -7,10 +7,9 @@ import Nav from "@/components/Nav";
 import { useManageCategory } from "@/hooks/useManageCategory";
 import { useQueryCategoryLearningRate } from "@/hooks/queries/useQueryCategoryLearningLate";
 
-import ChapterItem from "./ChapterItem";
+import ChapterListSection from "./ChapterListSection";
 import CategoryHeader from "./CategoryHeader";
 
-// TODO: API 연결 후 학습률 & 학습 단어수 계산해서 적용
 const MainActivity: ActivityComponentType = () => {
   const location = useLocation();
   const { state } = location;
@@ -48,16 +47,8 @@ const MainActivity: ActivityComponentType = () => {
         />
         <section className="flex w-full flex-col gap-4 px-4">
           <div className="text-xl font-bold">어휘 학습</div>
-          <ChapterItem
-            isLearned={true}
-            chapterId={1}
-            chapterName="어쩌구저쩌구"
-          />
-          <ChapterItem
-            isLearned={false}
-            chapterId={2}
-            chapterName="어쩌구저쩌구2"
-          />
+
+          <ChapterListSection categoryId={categoryId} />
         </section>
       </main>
     </AppScreen>
