@@ -14,7 +14,7 @@ const CategoryItem = (props: CategoryItemProps) => {
   const navigate = useNavigate();
 
   const handleClick = () => {
-    navigate("/quiz", { state: { categoryId, categoryName, categoryExplain } });
+    navigate("/quiz", { state: { categoryId, categoryName } });
   };
 
   return (
