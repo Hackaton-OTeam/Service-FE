@@ -16,14 +16,13 @@ import {
 import NextStepButton from "@/pages/initial-setting/_components/NextStepButton";
 
 type CompleteParams = {
-  step: number;
   nickname: string;
 };
 
 const CompleteActivity: ActivityComponentType<CompleteParams> = ({
   params,
 }) => {
-  const { step, nickname } = params;
+  const { nickname } = params;
 
   return (
     <AppScreen
