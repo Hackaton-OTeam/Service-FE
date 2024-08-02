@@ -2,6 +2,8 @@ import { cn } from "@ui/lib/utils";
 
 import LearnedIcon from "@/components/Icons/LearnedIcon";
 
+import { useQuizFlow } from "@/utils/useQuizFlow";
+
 interface ChapterComponentProps {
   isLearned: boolean;
   chapterId: number;
@@ -10,8 +12,15 @@ interface ChapterComponentProps {
 
 const ChapterComponent = (props: ChapterComponentProps) => {
   const { isLearned, chapterId, chapterName } = props;
+  const { push } = useQuizFlow();
+
+  const handleClick = () => {
+    push("QuizActivity", { chapterId: chapterId, chapterName: chapterName });
+  };
+
   return (
     <div
+      onClick={handleClick}
       className={cn(
         "flex w-full justify-between gap-3 rounded-2xl border-2 px-6 py-4",
         {

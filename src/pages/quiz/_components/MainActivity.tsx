@@ -14,13 +14,13 @@ const MainActivity: ActivityComponentType = () => {
       <header className="sticky left-0 top-0 z-10 bg-white py-2">
         <Nav backLink="/home" />
       </header>
-      <main className="flex h-full flex-col items-center justify-start gap-10">
+      <main className="flex h-full flex-col items-center justify-start gap-10 px-4">
         <section className="flex w-full flex-col">
           quizPage임
           <DountChart percent={0.65} />
           <ProgressBar percent={70} />
         </section>
-        <section className="flex w-full flex-col gap-4 px-4">
+        <section className="flex w-full flex-col gap-4">
           <div className="text-xl font-bold">어휘 학습</div>
           <ChapterComponent
             isLearned={true}
