@@ -29,5 +29,5 @@ export const useManageUser = () => {
     }
   }, [userEmail]);
 
-  return { nickname, setUserLevel, userLevel };
+  return { nickname, setNickName, setUserLevel, userLevel };
 };
