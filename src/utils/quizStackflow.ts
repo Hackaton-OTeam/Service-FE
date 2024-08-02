@@ -10,7 +10,7 @@ import MainActivity from "@/pages/quiz/_components/MainActivity";
 import CompleteActivity from "@/pages/initial-setting/_components/CompleteActivity";
 
 export const { Stack, activities } = stackflow({
-  transitionDuration: 350,
+  transitionDuration: 500,
   plugins: [
     basicRendererPlugin(),
     basicUIPlugin({

@@ -4,12 +4,12 @@ import { basicUIPlugin } from "@stackflow/plugin-basic-ui";
 
 import "@stackflow/plugin-basic-ui/index.css";
 
-import FirstStepActivity from "@/pages/initial-setting/_components/FirstStepActivity";
 import SecondStepActivity from "@/pages/initial-setting/_components/SecondStepActivity";
+import FirstStepActivity from "@/pages/initial-setting/_components/FirstStepActivity";
 import CompleteActivity from "@/pages/initial-setting/_components/CompleteActivity";
 
 export const { Stack, activities } = stackflow({
-  transitionDuration: 350,
+  transitionDuration: 500,
   plugins: [
     basicRendererPlugin(),
     basicUIPlugin({
