@@ -5,12 +5,7 @@ import { AppScreen } from "@stackflow/plugin-basic-ui";
 import NumberIcon from "@/components/Icons/NumberIcon";
 import BackIcon from "@/components/Icons/BackIcon";
 
-import {
-  Activity,
-  ActivityContent,
-  ActivityHeader,
-  ActivityFooter,
-} from "./Activity";
+import { Activity, ActivityContent, ActivityHeader } from "./Activity";
 
 import QuizItem from "@/pages/quiz/_components/QuizItem";
 
@@ -45,7 +40,7 @@ const QuizActivity: ActivityComponentType<QuizParams> = ({ params }) => {
       }}
     >
       <Activity>
-        <ActivityContent>
+        <ActivityContent className="px-4">
           <ActivityHeader>
             <NumberIcon number={1} />
             <h1 className="flex gap-2 text-2xl font-bold">

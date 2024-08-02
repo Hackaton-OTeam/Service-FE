@@ -35,6 +35,7 @@ const QuizItem = (props: QuizItemProps) => {
         chapterName: chapterName,
         quizId: 1,
         quizAnswer: isAnswer ? "정답" : "오답",
+        step: 7,
       });
     }, 2000); // 2초 후에 push 함수 호출
   };

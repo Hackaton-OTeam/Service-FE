@@ -8,7 +8,7 @@ import VocaActivity from "@/pages/quiz/_components/VocaActivity";
 import QuizAnswerActivity from "@/pages/quiz/_components/QuizAnswerActivity";
 import QuizActivity from "@/pages/quiz/_components/QuizActivity";
 import MainActivity from "@/pages/quiz/_components/MainActivity";
-import CompleteActivity from "@/pages/initial-setting/_components/CompleteActivity";
+import CompleteActivity from "@/pages/quiz/_components/CompleteActivity";
 
 export const { Stack, activities } = stackflow({
   transitionDuration: 500,
