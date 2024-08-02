@@ -5,7 +5,7 @@ const TransitionalCategory = () => {
     <div className="flex items-center justify-center">
       <img
         src={TransitionalCategoryImage}
-        className="h-auto w-32"
+        className="h-[70px] w-auto"
         loading="lazy"
       />
     </div>
