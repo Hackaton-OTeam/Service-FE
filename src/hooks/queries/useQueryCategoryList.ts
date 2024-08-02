@@ -7,6 +7,5 @@ export const useQueryCategoryList = () => {
     queryKey: ["category-list"],
     queryFn: () => getCategoryList(),
   });
-
   return { data };
 };
