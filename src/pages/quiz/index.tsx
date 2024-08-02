@@ -1,9 +1,13 @@
+import { Suspense } from "react";
+
 import { Stack } from "@/utils/quizStackflow";
 
 const QuizPage = () => {
   return (
     <main className="flex h-full flex-col">
-      <Stack />
+      <Suspense>
+        <Stack />
+      </Suspense>
     </main>
   );
 };
