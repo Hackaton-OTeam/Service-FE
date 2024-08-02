@@ -4,13 +4,13 @@ import LearnedIcon from "@/components/Icons/LearnedIcon";
 
 import { useQuizFlow } from "@/utils/useQuizFlow";
 
-interface ChapterComponentProps {
+interface ChapterItemProps {
   isLearned: boolean;
   chapterId: number;
   chapterName: string;
 }
 
-const ChapterComponent = (props: ChapterComponentProps) => {
+const ChapterItem = (props: ChapterItemProps) => {
   const { isLearned, chapterId, chapterName } = props;
   const { push } = useQuizFlow();
 
@@ -35,4 +35,4 @@ const ChapterComponent = (props: ChapterComponentProps) => {
     </div>
   );
 };
-export default ChapterComponent;
+export default ChapterItem;
