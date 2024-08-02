@@ -7,6 +7,7 @@ import DountChart from "@/components/DountChart";
 
 import ChapterComponent from "@/pages/quiz/_components/ChapterComponent";
 
+// TODO: API 연결 후 학습률 & 학습 단어수 계산해서 적용
 const MainActivity: ActivityComponentType = () => {
   return (
     <AppScreen>
