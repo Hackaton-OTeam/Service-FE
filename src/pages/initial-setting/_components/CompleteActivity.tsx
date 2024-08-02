@@ -1,15 +1,19 @@
+import { ActivityComponentType } from "@stackflow/react";
+import { AppScreen } from "@stackflow/plugin-basic-ui";
+
+import NumberIcon from "@/components/Icons/NumberIcon";
+import CompleteIcon from "@/components/Icons/CompleteIcon";
 import BackIcon from "@/components/Icons/BackIcon";
+import BlueCharacter from "@/components/character/BlueCharacter";
+
 import {
   Activity,
   ActivityContent,
   ActivityFooter,
   ActivityHeader,
 } from "./Activity";
+
 import NextStepButton from "@/pages/initial-setting/_components/NextStepButton";
-import { AppScreen } from "@stackflow/plugin-basic-ui";
-import { ActivityComponentType } from "@stackflow/react";
-import NumberIcon from "@/components/Icons/NumberIcon";
-import BlueCharacter from "@/components/character/BlueCharacter";
 
 type CompleteParams = {
   step: number;
@@ -35,7 +39,7 @@ const CompleteActivity: ActivityComponentType<CompleteParams> = ({
       <Activity>
         <ActivityContent>
           <ActivityHeader>
-            <NumberIcon number={step} />
+            <CompleteIcon />
             <section className="flex flex-col gap-[10px]">
               <div className="flex flex-col gap-8 text-2xl font-bold">
                 <div>
