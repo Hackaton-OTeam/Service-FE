@@ -1,4 +1,4 @@
-import TransitionalLanguageImage from "@/assets/NewsLanguage.png";
+import TransitionalLanguageImage from "@/assets/TransitionalLanguage.png";
 
 const TransitionalLanguage = () => {
   return (
