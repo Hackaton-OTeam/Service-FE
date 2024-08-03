@@ -26,3 +26,8 @@ export type QuizResponseDTO = {
   wrongWord2: WrongWordDTO;
   wrongWord3: WrongWordDTO;
 };
+
+export type setCompleteParams = {
+  userEmail: string;
+  chapterId: number;
+};

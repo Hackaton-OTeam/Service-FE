@@ -1,4 +1,4 @@
-import { QuizDTO, QuizResponseDTO } from "@/types/quizType";
+import { QuizDTO, QuizResponseDTO, setCompleteParams } from "@/types/quizType";
 
 import { instance } from "@/api/instance";
 
@@ -14,5 +14,15 @@ export const getQuizAnswer = async (quizId: number) => {
     `/quiz/details?quizId=${quizId}`,
   );
 
+  return data;
+};
+
+export const setCompleteQuiz = async ({
+  userEmail,
+  chapterId,
+}: setCompleteParams) => {
+  const { data } = await instance.post(
+    ` /quiz/complete-chapter?userEmail=${userEmail}&chapterId=${chapterId}`,
+  );
   return data;
 };
