@@ -22,7 +22,7 @@ export const setCompleteQuiz = async ({
   chapterId,
 }: setCompleteParams) => {
   const { data } = await instance.post(
-    ` /quiz/complete-chapter?userEmail=${userEmail}&chapterId=${chapterId}`,
+    `/quiz/complete-chapter?userEmail=${userEmail}&chapterId=${chapterId}`,
   );
   return data;
 };

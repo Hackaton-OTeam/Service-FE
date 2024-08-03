@@ -1,8 +1,11 @@
+import { useEffect } from "react";
 import { ActivityComponentType } from "@stackflow/react";
 import { AppScreen } from "@stackflow/plugin-basic-ui";
 
 import CompleteIcon from "@/components/Icons/CompleteIcon";
 import BackIcon from "@/components/Icons/BackIcon";
+
+import { useMutationCompleteQuiz } from "@/hooks/mutation/useMutationCompleteQuiz";
 
 import {
   Activity,
@@ -22,6 +25,25 @@ const CompleteActivity: ActivityComponentType<CompleteParams> = ({
   params,
 }) => {
   const { chapterId, chapterName } = params;
+
+  const mutation = useMutationCompleteQuiz();
+  const userEmail = localStorage.getItem("userEmail");
+  useEffect(() => {
+    if (userEmail) {
+      mutation.mutate(
+        {
+          userEmail: userEmail,
+          chapterId: chapterId,
+        },
+        {
+          onSuccess: response => {
+            console.log("퀴즈 완료 처리 성공:", response);
+            return;
+          },
+        },
+      );
+    }
+  }, [userEmail, chapterId]);
 
   return (
     <AppScreen
