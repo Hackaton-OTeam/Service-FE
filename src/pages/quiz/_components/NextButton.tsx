@@ -57,7 +57,6 @@ const NextButton = (props: NextButtonProps) => {
         while (popCounts > 0) {
           pop();
           popCounts--;
-          console.log("popcounts : ", popCounts);
         }
       });
     }
