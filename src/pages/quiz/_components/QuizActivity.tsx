@@ -5,6 +5,8 @@ import { AppScreen } from "@stackflow/plugin-basic-ui";
 import NumberIcon from "@/components/Icons/NumberIcon";
 import BackIcon from "@/components/Icons/BackIcon";
 
+import { QuizDTO } from "@/types/quizType";
+
 import { Activity, ActivityContent, ActivityHeader } from "./Activity";
 
 import QuizItem from "@/pages/quiz/_components/QuizItem";
@@ -12,13 +14,17 @@ import QuizItem from "@/pages/quiz/_components/QuizItem";
 type QuizParams = {
   chapterId: number;
   chapterName: string;
+  quizList: QuizDTO[];
 };
 
 const QuizActivity: ActivityComponentType<QuizParams> = ({ params }) => {
-  const { chapterId, chapterName } = params;
+  const { chapterId, chapterName, quizList } = params;
   const [selectedQuizIndex, setSelectedQuizIndex] = useState<number | null>(
     null,
   );
+
+  console.log("quizList: " + quizList);
+  console.log("quizList length: " + quizList.length);
 
   const handleQuizItemClick = (index: number) => {
     setSelectedQuizIndex(index);

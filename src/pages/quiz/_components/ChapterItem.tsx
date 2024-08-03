@@ -2,6 +2,8 @@ import { cn } from "@ui/lib/utils";
 
 import LearnedIcon from "@/components/Icons/LearnedIcon";
 
+import { useQueryQuizList } from "@/hooks/queries/useQueryQuizList";
+
 import { useQuizFlow } from "@/utils/useQuizFlow";
 
 interface ChapterItemProps {
@@ -14,8 +16,15 @@ const ChapterItem = (props: ChapterItemProps) => {
   const { isLearned, chapterId, chapterName } = props;
   const { push } = useQuizFlow();
 
+  const { data } = useQueryQuizList(chapterId);
   const handleClick = () => {
-    push("QuizActivity", { chapterId: chapterId, chapterName: chapterName });
+    if (data) {
+      push("QuizActivity", {
+        chapterId,
+        chapterName,
+        quizList: data,
+      });
+    }
   };
 
   return (
