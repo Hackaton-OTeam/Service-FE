@@ -30,8 +30,7 @@ const VocaActivity: ActivityComponentType<VocaParams> = ({ params }) => {
       <Activity>
         <ActivityContent>
           <main className="flex flex-col gap-5 px-4">
-            <div>지금 voca</div>
-            <section className="flex flex-col gap-[23px]">
+            <section className="flex flex-col gap-[23px] pt-3">
               <VocaItem
                 isScrap={true}
                 word={"날조"}
@@ -46,12 +45,14 @@ const VocaActivity: ActivityComponentType<VocaParams> = ({ params }) => {
                 description={"예시문장"}
                 example="예문예문예문예문예문예문예문예문예문예문예문예문예문예문예문예문"
               />
-              <div>chapterId: {chapterId}</div>
-              <div>chapterName: {chapterName}</div>
             </section>
           </main>
           <ActivityFooter>
-            <NextButton activityName={"MainActivity" as never} />
+            <NextButton
+              activityName={"MainActivity" as never}
+              chapterId={chapterId}
+              chapterName={chapterName}
+            />
           </ActivityFooter>
         </ActivityContent>
       </Activity>
