@@ -3,6 +3,10 @@ import { AppScreen } from "@stackflow/plugin-basic-ui";
 
 import BackIcon from "@/components/Icons/BackIcon";
 
+import { useQueryAllQuizzes } from "@/hooks/queries/useQueryAllQuizzes";
+
+import { ScrapWordDTO } from "@/types/quizType";
+
 import VocaItem from "./VocaItem";
 import NextButton from "./NextButton";
 import { Activity, ActivityFooter, ActivityContent } from "./Activity";
@@ -14,6 +18,12 @@ type VocaParams = {
 
 const VocaActivity: ActivityComponentType<VocaParams> = ({ params }) => {
   const { chapterId, chapterName } = params;
+
+  const userEmail = localStorage.getItem("userEmail");
+  const { data: scrapQuizList } = useQueryAllQuizzes({
+    userEmail: userEmail!,
+    chapterId: chapterId,
+  });
 
   return (
     <AppScreen
@@ -31,20 +41,16 @@ const VocaActivity: ActivityComponentType<VocaParams> = ({ params }) => {
         <ActivityContent>
           <main className="flex flex-col gap-5 px-4">
             <section className="flex flex-col gap-[23px] pt-3">
-              <VocaItem
-                isScrap={true}
-                word={"날조"}
-                wordClass={"품사"}
-                description={"예시문장"}
-                example="예문예문예문예문예문예문예문예문예문예문예문예문예문예문예문예문"
-              />
-              <VocaItem
-                isScrap={false}
-                word={"날조"}
-                wordClass={"품사"}
-                description={"예시문장"}
-                example="예문예문예문예문예문예문예문예문예문예문예문예문예문예문예문예문"
-              />
+              {scrapQuizList.map((item: ScrapWordDTO) => (
+                <VocaItem
+                  key={item.id}
+                  isScrap={item.scrap}
+                  word={item.word}
+                  wordClass={item.wordClass}
+                  description={item.description}
+                  example={item.example}
+                />
+              ))}
             </section>
           </main>
           <ActivityFooter>

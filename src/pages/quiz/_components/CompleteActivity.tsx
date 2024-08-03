@@ -30,18 +30,10 @@ const CompleteActivity: ActivityComponentType<CompleteParams> = ({
   const userEmail = localStorage.getItem("userEmail");
   useEffect(() => {
     if (userEmail) {
-      mutation.mutate(
-        {
-          userEmail: userEmail,
-          chapterId: chapterId,
-        },
-        {
-          onSuccess: response => {
-            console.log("퀴즈 완료 처리 성공:", response);
-            return;
-          },
-        },
-      );
+      mutation.mutate({
+        userEmail: userEmail,
+        chapterId: chapterId,
+      });
     }
   }, [userEmail, chapterId]);
 

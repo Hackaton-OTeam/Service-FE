@@ -13,5 +13,5 @@ export const useQueryAllQuizzes = ({
     queryFn: () => getAllQuizzes({ userEmail, chapterId }),
   });
 
-  return data;
+  return { data };
 };
