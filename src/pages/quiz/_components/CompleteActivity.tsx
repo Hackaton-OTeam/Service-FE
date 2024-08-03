@@ -44,7 +44,7 @@ const CompleteActivity: ActivityComponentType<CompleteParams> = ({
                 <div className="flex flex-col gap-8">
                   <div className="text-2xl font-bold">
                     <p className="text-brand">수고하셨습니다!</p>
-                    <div className="flex">
+                    <div>
                       <p className="inline-block text-brand">[{chapterName}]</p>
                       <p className="inline-block">&nbsp;학습을 완료했어요!</p>
                     </div>
@@ -55,13 +55,13 @@ const CompleteActivity: ActivityComponentType<CompleteParams> = ({
                 </div>
               </section>
             </ActivityHeader>
-            <section className="flex flex-col gap-[23px]">
-              <div>chapterId: {chapterId}</div>
-              <div>chapterName: {chapterName}</div>
-            </section>
           </main>
           <ActivityFooter>
-            <NextButton activityName={"VocaActivity" as never} />
+            <NextButton
+              activityName={"VocaActivity" as never}
+              chapterId={chapterId}
+              chapterName={chapterName}
+            />
           </ActivityFooter>
         </ActivityContent>
       </Activity>

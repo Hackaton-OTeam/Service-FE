@@ -21,7 +21,15 @@ interface NextButtonProps
 }
 
 const NextButton = (props: NextButtonProps) => {
-  const { activityName, disabled, params, isLoading, onClick } = props;
+  const {
+    activityName,
+    disabled,
+    chapterId,
+    chapterName,
+    params,
+    isLoading,
+    onClick,
+  } = props;
   const { push } = useQuizFlow();
 
   const [buttonText, setButtonText] = useState("");
@@ -39,7 +47,7 @@ const NextButton = (props: NextButtonProps) => {
   }, [activityName]);
 
   const handleClick = async () => {
-    push(activityName, params || {});
+    push(activityName, { chapterId, chapterName, ...params } || {});
   };
 
   return (
