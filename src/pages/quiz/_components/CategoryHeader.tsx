@@ -40,7 +40,7 @@ const CategoryHeader = (props: CategoryHeaderProps) => {
       </div>
       <div className="flex flex-col gap-1">
         <div className="flex justify-between">
-          <div className="absolute bottom-[37px] left-4 z-30 flex w-28 gap-1 font-extrabold">
+          <div className="absolute bottom-[37px] left-4 z-30 flex w-fit gap-1 font-extrabold">
             <h1 className="self-end text-[75px] leading-[75px] text-[#547AFF]">
               {learningLearned}
             </h1>
