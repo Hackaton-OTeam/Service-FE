@@ -45,6 +45,7 @@ const QuizActivity: ActivityComponentType<QuizParams> = ({ params }) => {
     null,
   );
   const [buttonCheck, setButtonCheck] = useState(false); //버튼으로 정답확인을 했는가?
+  const [buttonLoading, setButtonLoading] = useState(false); // 버튼 로딩 상태 추가
 
   const quiz = quizList.find(q => q.id === step);
 
@@ -67,6 +68,7 @@ const QuizActivity: ActivityComponentType<QuizParams> = ({ params }) => {
     if (selectedQuizIndex === null) return; // 선택된 항목이 없으면 아무 것도 하지 않음
 
     setButtonCheck(true);
+    setButtonLoading(true);
     setTimeout(() => {
       // QuizAnswerActivity로 이동
       push("QuizAnswerActivity", {
@@ -76,6 +78,7 @@ const QuizActivity: ActivityComponentType<QuizParams> = ({ params }) => {
         quizList,
       });
       setButtonCheck(false);
+      setButtonLoading(false);
     }, 2000); // 2초 후에 QuizAnswerActivity로 이동
   };
 
@@ -124,6 +127,7 @@ const QuizActivity: ActivityComponentType<QuizParams> = ({ params }) => {
               chapterName={chapterName}
               disabled={selectedQuizIndex === null}
               onClick={handleNextButtonClick}
+              isLoading={buttonLoading}
             />
           </ActivityFooter>
         </ActivityContent>

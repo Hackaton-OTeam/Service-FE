@@ -7,3 +7,22 @@ export type QuizDTO = {
   wrongAnswer2: string;
   wrongAnswer3: string;
 };
+
+export type WrongWordDTO = {
+  id: number;
+  word: string;
+  wordClass: string;
+  description: string;
+  example: string;
+};
+
+export type WordDTO = WrongWordDTO & {
+  explanation: string;
+};
+
+export type QuizResponseDTO = {
+  answerWord: WordDTO;
+  wrongWord1: WrongWordDTO;
+  wrongWord2: WrongWordDTO;
+  wrongWord3: WrongWordDTO;
+};
