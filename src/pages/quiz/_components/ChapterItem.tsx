@@ -23,6 +23,7 @@ const ChapterItem = (props: ChapterItemProps) => {
         chapterId,
         chapterName,
         quizList: data,
+        step: 1,
       });
     }
   };

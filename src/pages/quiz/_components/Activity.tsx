@@ -25,10 +25,7 @@ const ActivityContent = ({
   return (
     <main className="flex h-full grow flex-col items-center">
       <section
-        className={cn(
-          "flex w-full grow flex-col justify-between gap-5",
-          className,
-        )}
+        className={cn("flex w-full grow flex-col justify-between", className)}
         {...props}
       >
         {children}

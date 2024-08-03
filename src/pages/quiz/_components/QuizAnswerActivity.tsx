@@ -4,6 +4,8 @@ import { AppScreen } from "@stackflow/plugin-basic-ui";
 import NumberIcon from "@/components/Icons/NumberIcon";
 import BackIcon from "@/components/Icons/BackIcon";
 
+import { QuizDTO } from "@/types/quizType";
+
 import {
   Activity,
   ActivityContent,
@@ -17,15 +19,14 @@ import NextButton from "@/pages/quiz/_components/NextButton";
 type QuizAnswerParams = {
   chapterId: number;
   chapterName: string;
-  quizId: number;
-  quizAnswer: string;
   step: number;
+  quizList: QuizDTO[];
 };
 
 const QuizAnswerActivity: ActivityComponentType<QuizAnswerParams> = ({
   params,
 }) => {
-  const { chapterId, chapterName, quizId, quizAnswer, step } = params;
+  const { chapterId, chapterName, step, quizList } = params;
 
   return (
     <AppScreen
@@ -71,21 +72,20 @@ const QuizAnswerActivity: ActivityComponentType<QuizAnswerParams> = ({
                 description={"예시문장"}
                 example="예문예문예문예문예문예문예문예문예문예문예문예문예문예문예문예문"
               />
-              <div>chapterId: {chapterId}</div>
-              <div>chapterName: {chapterName}</div>
-              <div>quizId: {quizId}</div>
-              <div>quizAnswer: {quizAnswer}</div>
             </section>
           </main>
           <ActivityFooter>
             <NextButton
               activityName={
-                step >= 7
+                step >= quizList.length
                   ? ("CompleteActivity" as never)
                   : ("QuizActivity" as never)
               }
+              chapterId={chapterId}
+              chapterName={chapterName}
               params={{
                 step: step + 1,
+                quizLsit: quizList,
               }}
             />
           </ActivityFooter>
