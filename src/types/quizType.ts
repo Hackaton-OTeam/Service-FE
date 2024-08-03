@@ -31,3 +31,9 @@ export type setCompleteParams = {
   userEmail: string;
   chapterId: number;
 };
+
+export type getAllQuizzesParams = setCompleteParams;
+
+export type ScrapWordDTO = WrongWordDTO & {
+  scrap: boolean;
+};

@@ -1,4 +1,10 @@
-import { QuizDTO, QuizResponseDTO, setCompleteParams } from "@/types/quizType";
+import {
+  QuizDTO,
+  QuizResponseDTO,
+  setCompleteParams,
+  getAllQuizzesParams,
+  ScrapWordDTO,
+} from "@/types/quizType";
 
 import { instance } from "@/api/instance";
 
@@ -23,6 +29,16 @@ export const setCompleteQuiz = async ({
 }: setCompleteParams) => {
   const { data } = await instance.post(
     `/quiz/complete-chapter?userEmail=${userEmail}&chapterId=${chapterId}`,
+  );
+  return data;
+};
+
+export const getAllQuizzes = async ({
+  userEmail,
+  chapterId,
+}: getAllQuizzesParams) => {
+  const { data } = await instance.get<ScrapWordDTO[]>(
+    `/quiz/words?chapterId=${chapterId}&userEmail=${userEmail}`,
   );
   return data;
 };
