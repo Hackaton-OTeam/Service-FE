@@ -44,6 +44,7 @@ const VocaActivity: ActivityComponentType<VocaParams> = ({ params }) => {
               {scrapQuizList.map((item: ScrapWordDTO) => (
                 <VocaItem
                   key={item.id}
+                  id={item.id}
                   isScrap={item.scrap}
                   word={item.word}
                   wordClass={item.wordClass}

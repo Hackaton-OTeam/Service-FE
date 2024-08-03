@@ -1,9 +1,12 @@
+import { useState } from "react";
 import { cn } from "@ui/lib/utils";
 
 import SubBookMarkIcon from "@/components/Icons/SubBookMarkIcon";
-import BookMarkIcon from "@/components/Icons/BookMarkIcon";
+
+import { useMutationScrapWord } from "@/hooks/mutation/useMutationScrapWord";
 
 interface VocaItemProps {
+  id: number;
   isScrap: boolean;
   word: string;
   wordClass: string;
@@ -12,7 +15,28 @@ interface VocaItemProps {
 }
 
 const VocaItem = (props: VocaItemProps) => {
-  const { isScrap, word, wordClass, description, example } = props;
+  const { id, isScrap, word, wordClass, description, example } = props;
+
+  const [isBookmarked, setIsBookmarked] = useState(isScrap);
+
+  const mutation = useMutationScrapWord();
+  const userEmail = localStorage.getItem("userEmail")!;
+
+  const handleBookmarkClick = () => {
+    if (!isBookmarked) {
+      setIsBookmarked(true);
+
+      mutation.mutate(
+        { userEmail, wordId: id },
+        {
+          onSuccess: () => {
+            return;
+          },
+        },
+      );
+    }
+  };
+
   return (
     <div
       className={cn(
@@ -27,7 +51,10 @@ const VocaItem = (props: VocaItemProps) => {
         <div className="flex flex-col gap-0.5 text-brand">
           <div className="flex w-full items-center justify-between">
             <div className="text-xl font-bold">{word}</div>
-            <SubBookMarkIcon isActive={isScrap} />
+            <SubBookMarkIcon
+              isActive={isBookmarked}
+              onClick={handleBookmarkClick}
+            />
           </div>
 
           <div className="flex w-fit items-center justify-center rounded-[36px] border border-brand px-[5px] py-px text-center text-[10px] font-bold">
