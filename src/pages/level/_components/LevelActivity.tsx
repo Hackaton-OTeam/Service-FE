@@ -1,6 +1,10 @@
+import { useEffect, useState } from "react";
 import { AppScreen } from "@stackflow/plugin-basic-ui";
 
 import Nav from "@/components/Nav";
+
+import { useManageUser } from "@/hooks/useManageUser";
+import { useQueryGetLevelStatus } from "@/hooks/queries/useQueryGetLevelStatus";
 
 import LevelHeader from "./LevelHeader";
 
@@ -20,14 +24,40 @@ const images = [
 ];
 
 const LevelActivity = () => {
+  const [imageSrc, setImageSrc] = useState<string | undefined>(undefined);
+
+  //   const { data } = useQueryGetLevelStatus();
+  //   console.log(data);
+  // const {wordCount, level, wordMaxCount} = data;
+
+  //나중에 api로 불러온 걸로 수정하기
+  const { userLevel } = useManageUser();
+
+  useEffect(() => {
+    if (userLevel) {
+      const image = images.find(img => img.level === userLevel);
+      if (image) setImageSrc(image.imgSrc);
+    }
+  }, [userLevel]);
+
   return (
     <AppScreen>
       <header className="sticky left-0 top-0 z-10 py-2">
         <Nav backLink="/home" />
       </header>
-      <main className="flex h-full flex-col items-center justify-start px-4">
+      <main
+        className="flex flex-col items-center justify-between px-4 pb-7"
+        style={{ height: "calc(100% - 56px)" }}
+      >
         <LevelHeader />
-        <section className="w-full">여기에 이미지 들어와야함</section>
+        <section className="flex w-full items-center justify-center">
+          <img
+            src={imageSrc}
+            className="w-full"
+            loading="lazy"
+            alt="levelImage"
+          />
+        </section>
         <LevelFooter />
       </main>
     </AppScreen>

@@ -2,7 +2,7 @@ import ProgressBar from "@/components/ProgressBar";
 
 const LevelFooter = () => {
   return (
-    <section className="relative mb-7 flex h-[180px] w-full flex-col justify-between rounded-2xl border-2 border-brandGray px-4 py-[17px]">
+    <section className="relative flex h-[180px] w-full flex-col justify-between rounded-2xl border-2 border-brandGray px-4 py-[17px]">
       <h1 className="text-base font-bold text-brand">나의 습득 어휘</h1>
       <div
         className="absolute bottom-14 left-4 flex justify-between font-extrabold"
