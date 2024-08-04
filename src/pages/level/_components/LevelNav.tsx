@@ -10,7 +10,7 @@ const LevelNav = () => {
 
   return (
     <nav className="flex h-10 w-full items-center justify-center px-4">
-      <div className="flex-1 text-center text-xl font-bold leading-10">
+      <div className="ml-[18px] flex-1 text-center text-xl font-bold leading-10">
         관직 설명
       </div>
       <div onClick={handleClick}>
