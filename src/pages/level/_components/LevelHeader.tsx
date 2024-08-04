@@ -1,6 +1,15 @@
-const LevelHeader = () => {
+interface LevelHeaderProps {
+  onClick: () => void;
+}
+
+const LevelHeader = (props: LevelHeaderProps) => {
+  const { onClick } = props;
+
   return (
-    <section className="flex w-full flex-col gap-3 text-center">
+    <section
+      className="flex w-full flex-col gap-3 text-center"
+      onClick={onClick}
+    >
       <div className="flex w-full justify-end">
         <div className="flex w-fit items-center justify-center rounded-[36px] border border-brand px-2.5 py-[3px] text-[13px] font-semibold text-brand">
           관직 설명

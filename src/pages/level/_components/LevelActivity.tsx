@@ -1,10 +1,13 @@
 import { useEffect, useState } from "react";
+import { ActivityComponentType } from "@stackflow/react";
 import { AppScreen } from "@stackflow/plugin-basic-ui";
 
 import Nav from "@/components/Nav";
 
 import { useManageUser } from "@/hooks/useManageUser";
 import { useQueryGetLevelStatus } from "@/hooks/queries/useQueryGetLevelStatus";
+
+import { useLevelFlow } from "@/utils/useLevelFlow";
 
 import LevelHeader from "./LevelHeader";
 
@@ -23,8 +26,10 @@ const images = [
   { level: "세종대왕", imgSrc: FinalLevelImage },
 ];
 
-const LevelActivity = () => {
+const LevelActivity: ActivityComponentType = () => {
   const [imageSrc, setImageSrc] = useState<string | undefined>(undefined);
+
+  const { push } = useLevelFlow();
 
   //   const { data } = useQueryGetLevelStatus();
   //   console.log(data);
@@ -40,6 +45,10 @@ const LevelActivity = () => {
     }
   }, [userLevel]);
 
+  const handleClick = () => {
+    push("ExplainActivity", { nowLevel: userLevel });
+  };
+
   return (
     <AppScreen>
       <header className="sticky left-0 top-0 z-10 py-2">
@@ -49,7 +58,7 @@ const LevelActivity = () => {
         className="flex flex-col items-center justify-between px-4 pb-7"
         style={{ height: "calc(100% - 56px)" }}
       >
-        <LevelHeader />
+        <LevelHeader onClick={handleClick} />
         <section className="flex w-full items-center justify-center">
           <img
             src={imageSrc}
