@@ -27,7 +27,7 @@ const MainActivity: ActivityComponentType = () => {
     CategoryComponent,
     categoryExplain1,
     categoryExplain2,
-  } = useManageCategory(categoryId);
+  } = useManageCategory(Number(categoryId));
 
   return (
     <AppScreen>
