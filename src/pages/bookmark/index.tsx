@@ -46,7 +46,7 @@ const BookMarkPage = () => {
             지식 건강
           </div>
         </header>
-        <section className="flex gap-6 px-4 pt-10">
+        <section className="px-4 pt-10">
           <Suspense fallback={<div>Loading...</div>}>
             {activeSection === "word" ? <WordSection /> : <KnowledgeSection />}
           </Suspense>
