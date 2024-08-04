@@ -26,7 +26,7 @@ const CommonSenseItem = (props: CommonSenseItemProps) => {
       className="relative flex h-[347px] w-[292px] flex-col gap-4 rounded-[34px] px-4 pt-10 font-bold"
       style={itemStyle}
     >
-      <div className="flex flex-col gap-[10px]">
+      <div className="z-20 flex flex-col gap-[10px]">
         <h1 className="text-[27px] leading-tight">
           {title1}
           <br />
@@ -34,7 +34,7 @@ const CommonSenseItem = (props: CommonSenseItemProps) => {
         </h1>
         <p className="text-base text-[#8c8c8c]">{explain}</p>
       </div>
-      <div className="flex gap-2">
+      <div className="z-20 flex gap-2">
         <ClassComponent title={class1} />
         <ClassComponent title={class2} />
       </div>
