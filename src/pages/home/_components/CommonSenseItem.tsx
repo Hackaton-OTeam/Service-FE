@@ -2,22 +2,26 @@ import ClassComponent from "@/components/ClassComponent";
 
 import { useManageCommonSense } from "@/hooks/useManageCommonSense";
 
+import { useNavigate } from "@/router";
+
 interface CommonSenseItemProps {
   id: number;
   date: string;
 }
 
+// 현재 날짜를 YYYY-MM-DD 형식으로 변환하는 함수
+// 나중에 백에서 -를 .으로 바꾸면 return값 변경해야함
+const getCurrentDateString = () => {
+  const now = new Date();
+  const year = now.getFullYear();
+  const month = String(now.getMonth() + 1).padStart(2, "0"); // 월은 0부터 시작하므로 1을 더해줌
+  const day = String(now.getDate()).padStart(2, "0");
+  return `${year}-${month}-${day}`;
+};
+
 const CommonSenseItem = (props: CommonSenseItemProps) => {
   const { id, date } = props;
-
-  // 현재 날짜를 YYYY-MM-DD 형식으로 변환하는 함수
-  const getCurrentDateString = () => {
-    const now = new Date();
-    const year = now.getFullYear();
-    const month = String(now.getMonth() + 1).padStart(2, "0"); // 월은 0부터 시작하므로 1을 더해줍니다.
-    const day = String(now.getDate()).padStart(2, "0");
-    return `${year}-${month}-${day}`;
-  };
+  const navigate = useNavigate();
 
   // 오늘 날짜와 비교
   const currentDateString = getCurrentDateString();
@@ -35,8 +39,12 @@ const CommonSenseItem = (props: CommonSenseItemProps) => {
       : undefined, // 그라데이션인 경우 적용
   };
 
+  const handleClick = () => {
+    navigate("/common", { state: { commonId: id } });
+  };
+
   return (
-    <section className="flex flex-col gap-[5px]">
+    <section className="flex flex-col gap-[5px]" onClick={handleClick}>
       <div className="text-sm">{displayDate}</div>
       <div
         className="relative flex h-[347px] w-[292px] flex-col gap-4 rounded-[34px] px-4 pt-10 font-bold"
