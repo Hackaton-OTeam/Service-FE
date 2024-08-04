@@ -1,9 +1,11 @@
+import { useEffect, useRef } from "react";
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
+  type CarouselApi,
 } from "@ui/components/ui/carousel";
 import { ActivityComponentType } from "@stackflow/react";
 import { AppScreen } from "@stackflow/plugin-basic-ui";
@@ -56,13 +58,36 @@ type ExplainParams = {
 const ExplainActivity: ActivityComponentType<ExplainParams> = ({ params }) => {
   const { nowLevel } = params;
 
+  const carouselRef = useRef<CarouselApi | null>(null);
+
+  useEffect(() => {
+    if (carouselRef.current) {
+      const startIndex = levelExplain.findIndex(
+        level => level.level === nowLevel,
+      );
+      if (startIndex !== -1) {
+        carouselRef.current.scrollTo(startIndex);
+      }
+    }
+  }, [nowLevel]);
+
+  const handleApiSet = (api: CarouselApi) => {
+    carouselRef.current = api;
+    const startIndex = levelExplain.findIndex(
+      level => level.level === nowLevel,
+    );
+    if (startIndex !== -1) {
+      api?.scrollTo(startIndex, true);
+    }
+  };
+
   return (
     <AppScreen>
       <header className="sticky left-0 top-0 z-10 py-2">
         <LevelNav />
       </header>
       <div className="relative">
-        <Carousel className="mt-8 h-full w-full px-4">
+        <Carousel className="mt-8 h-full w-full px-4" setApi={handleApiSet}>
           <CarouselContent>
             {levelExplain.map((level, index) => (
               <CarouselItem key={index}>
