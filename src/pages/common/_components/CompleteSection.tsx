@@ -1,5 +1,9 @@
+import { useState } from "react";
+
 import SubBookMarkIcon from "@/components/Icons/SubBookMarkIcon";
 import ClassComponent from "@/components/ClassComponent";
+
+import { useMutationScrapKnowledge } from "@/hooks/mutation/useMutationScrapKnowledge";
 
 interface CompleteSectionProps {
   id: number;
@@ -25,14 +29,37 @@ const CompleteSection = (props: CompleteSectionProps) => {
 
   const width = size.find(s => s.id === id)?.width || "100%";
 
+  const [isScrap, setIsScrap] = useState(false);
+
+  const mutation = useMutationScrapKnowledge();
+  const userEmail = localStorage.getItem("userEmail");
+
+  const handleScrapClick = () => {
+    if (!isScrap && userEmail) {
+      setIsScrap(true);
+
+      mutation.mutate(
+        {
+          userEmail,
+          knowledgeId: id,
+        },
+        {
+          onSuccess: () => {
+            return;
+          },
+        },
+      );
+    }
+  };
+
   return (
     <section
       className="relative mb-auto mt-7 flex h-[484px] w-[361px] flex-col justify-start rounded-[41px] border-[3px] border-brandGray px-6 pt-9"
       style={itemStyle}
     >
-      <div className="absolute right-8 top-5 z-30 flex gap-1">
+      <div className="absolute right-8 top-5 z-30 flex items-center gap-[6px]">
         <div className="text-base font-bold text-brand">스크랩하기</div>
-        <SubBookMarkIcon isActive={false} />
+        <SubBookMarkIcon isActive={isScrap} onClick={handleScrapClick} />
       </div>
       <div className="z-20 flex flex-col gap-[14px]">
         <div className="flex gap-2">
