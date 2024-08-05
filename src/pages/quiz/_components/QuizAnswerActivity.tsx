@@ -93,6 +93,7 @@ const QuizAnswerActivity: ActivityComponentType<QuizAnswerParams> = ({
               chapterName={chapterName}
               params={{
                 step: step + 1,
+                quizList: quizList,
               }}
             />
           </ActivityFooter>
