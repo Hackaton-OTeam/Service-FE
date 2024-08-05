@@ -47,7 +47,7 @@ const VocaActivity: ActivityComponentType<VocaParams> = ({ params }) => {
       <Activity>
         <ActivityContent>
           <main className="flex flex-col gap-5 px-4">
-            <section className="flex flex-col gap-[23px] pt-3">
+            <section className="flex flex-col gap-[23px] py-4">
               {scrapQuizList.map((item: ScrapWordDTO) => (
                 <VocaItem
                   key={item.id}

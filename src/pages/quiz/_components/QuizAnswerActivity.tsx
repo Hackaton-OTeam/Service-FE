@@ -1,6 +1,7 @@
 import { ActivityComponentType } from "@stackflow/react";
 import { AppScreen } from "@stackflow/plugin-basic-ui";
 
+import ProgressBar from "@/components/ProgressBar";
 import NumberIcon from "@/components/Icons/NumberIcon";
 import BackIcon from "@/components/Icons/BackIcon";
 
@@ -56,14 +57,19 @@ const QuizAnswerActivity: ActivityComponentType<QuizAnswerParams> = ({
       <Activity>
         <ActivityContent>
           <main className="flex flex-col gap-5 px-4">
-            <ActivityHeader>
-              <NumberIcon number={step} />
-              <h1 className="text-2xl font-bold">
-                {quiz?.question1}
-                <span className="text-brand">[&emsp;{quiz?.answer}&emsp;]</span>
-                {quiz?.question2}
-              </h1>
-            </ActivityHeader>
+            <section className="flex flex-col gap-[50px]">
+              <ProgressBar percent={step / quizList.length} />
+              <ActivityHeader>
+                <NumberIcon number={step} />
+                <h1 className="text-2xl font-bold">
+                  {quiz?.question1}
+                  <span className="text-brand">
+                    [&emsp;{quiz?.answer}&emsp;]
+                  </span>
+                  {quiz?.question2}
+                </h1>
+              </ActivityHeader>
+            </section>
             <section className="flex flex-col gap-[23px] py-3">
               {answerItems.map((item, index) => (
                 <QuizAnswerItem
