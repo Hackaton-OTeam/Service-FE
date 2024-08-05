@@ -3,6 +3,7 @@ import { AppScreen } from "@stackflow/plugin-basic-ui";
 
 import BackIcon from "@/components/Icons/BackIcon";
 
+import { useManageUser } from "@/hooks/useManageUser";
 import { useQueryAllQuizzes } from "@/hooks/queries/useQueryAllQuizzes";
 
 import { ScrapWordDTO } from "@/types/quizType";
@@ -19,11 +20,17 @@ type VocaParams = {
 const VocaActivity: ActivityComponentType<VocaParams> = ({ params }) => {
   const { chapterId, chapterName } = params;
 
+  const { userLevel } = useManageUser();
+  const OldUserLevel = localStorage.getItem("OldUserLevel");
+
   const userEmail = localStorage.getItem("userEmail");
   const { data: scrapQuizList } = useQueryAllQuizzes({
     userEmail: userEmail!,
     chapterId: chapterId,
   });
+
+  const nextActivityName =
+    userLevel !== OldUserLevel ? "LevelUpActivity" : "MainActivity";
 
   return (
     <AppScreen
@@ -56,7 +63,7 @@ const VocaActivity: ActivityComponentType<VocaParams> = ({ params }) => {
           </main>
           <ActivityFooter>
             <NextButton
-              activityName={"MainActivity" as never}
+              activityName={nextActivityName as never}
               chapterId={chapterId}
               chapterName={chapterName}
             />
