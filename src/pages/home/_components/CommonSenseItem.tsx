@@ -9,8 +9,7 @@ interface CommonSenseItemProps {
   date: string;
 }
 
-// 현재 날짜를 YYYY-MM-DD 형식으로 변환하는 함수
-// 나중에 백에서 -를 .으로 바꾸면 return값 변경해야함
+// 현재 날짜를 YYYY.MM.DD 형식으로 변환하는 함수
 const getCurrentDateString = () => {
   const now = new Date();
   const year = now.getFullYear();
