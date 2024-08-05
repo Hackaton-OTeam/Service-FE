@@ -3,3 +3,8 @@ export type KnowledgeDTO = {
   date: string;
   title: string;
 };
+
+export type ScrapKnowledgeParams = {
+  userEmail: string;
+  knowledgeId: number;
+};
