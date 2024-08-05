@@ -1,4 +1,3 @@
-import { useLocation } from "react-router-dom";
 import { ActivityComponentType } from "@stackflow/react";
 import { AppScreen } from "@stackflow/plugin-basic-ui";
 
@@ -6,11 +5,14 @@ import BackIcon from "@/components/Icons/BackIcon";
 
 import NextButton from "./NextButton";
 
-const CompleteActivity: ActivityComponentType = () => {
-  //오늘의 어휘 id (api 연결용)
-  const location = useLocation();
-  const { state } = location;
-  const { commonId } = state;
+type CompleteParams = {
+  commonId: number;
+};
+
+const CompleteActivity: ActivityComponentType<CompleteParams> = ({
+  params,
+}) => {
+  const { commonId } = params;
 
   return (
     <AppScreen
@@ -26,7 +28,10 @@ const CompleteActivity: ActivityComponentType = () => {
     >
       <main className="flex h-full px-4">mainActivity</main>
       <footer className="sticky bottom-0 z-50">
-        <NextButton activityName={"ContentActivity" as never} />
+        <NextButton
+          activityName={"ContentActivity" as never}
+          commonId={commonId}
+        />
       </footer>
     </AppScreen>
   );

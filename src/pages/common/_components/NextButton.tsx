@@ -10,13 +10,13 @@ import { useNavigate } from "@/router";
 interface NextButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   activityName: never;
-  //   knowledgeId: number;
+  commonId: number;
   disabled?: boolean;
   isLoading?: boolean;
 }
 
 const NextButton = (props: NextButtonProps) => {
-  const { activityName, disabled, isLoading } = props;
+  const { activityName, commonId, disabled, isLoading } = props;
 
   const { push, pop } = useCommonFlow();
   const [buttonText, setButtonText] = useState("다음");
@@ -45,7 +45,7 @@ const NextButton = (props: NextButtonProps) => {
       navigate("/home", { replace: true });
       return;
     }
-    push(activityName, {});
+    push(activityName, { commonId });
   };
 
   return (

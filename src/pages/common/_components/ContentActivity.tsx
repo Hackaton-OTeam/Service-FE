@@ -5,7 +5,28 @@ import BackIcon from "@/components/Icons/BackIcon";
 
 import NextButton from "./NextButton";
 
-const ContentActivity: ActivityComponentType = () => {
+import MoneyContent from "@/pages/common/_components/MoneyContent";
+import ForeignContent from "@/pages/common/_components/ForeignContent";
+import BusinessContent from "@/pages/common/_components/BusinessContent";
+import AppleContent from "@/pages/common/_components/AppleContent";
+
+type ContentParams = {
+  commonId: number;
+};
+
+const contents = [
+  { id: 1, content: AppleContent },
+  { id: 2, content: MoneyContent },
+  { id: 3, content: BusinessContent },
+  { id: 4, content: ForeignContent },
+];
+
+const ContentActivity: ActivityComponentType<ContentParams> = ({ params }) => {
+  const { commonId } = params;
+
+  const ContentComponent =
+    contents.find(item => item.id === commonId)?.content || null;
+
   return (
     <AppScreen
       appBar={{
@@ -18,9 +39,16 @@ const ContentActivity: ActivityComponentType = () => {
         title: <div className="text-xl font-bold">매일 어휘 한 조각</div>,
       }}
     >
-      <main className="flex h-full px-4">contentActivity</main>
+      {ContentComponent ? (
+        <ContentComponent />
+      ) : (
+        <div>해당 콘텐츠를 찾을 수 없습니다.</div>
+      )}
       <footer className="sticky bottom-0 z-50">
-        <NextButton activityName={"MainActivity" as never} />
+        <NextButton
+          activityName={"MainActivity" as never}
+          commonId={commonId}
+        />
       </footer>
     </AppScreen>
   );

@@ -47,7 +47,10 @@ const MainActivity: ActivityComponentType = () => {
           />
         </main>
         <footer className="sticky bottom-0 z-50">
-          <NextButton activityName={"ContentActivity" as never} />
+          <NextButton
+            activityName={"ContentActivity" as never}
+            commonId={commonId}
+          />
         </footer>
       </main>
     </AppScreen>
