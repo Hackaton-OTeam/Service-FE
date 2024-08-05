@@ -16,7 +16,7 @@ const getCurrentDateString = () => {
   const year = now.getFullYear();
   const month = String(now.getMonth() + 1).padStart(2, "0"); // 월은 0부터 시작하므로 1을 더해줌
   const day = String(now.getDate()).padStart(2, "0");
-  return `${year}-${month}-${day}`;
+  return `${year}.${month}.${day}`;
 };
 
 const CommonSenseItem = (props: CommonSenseItemProps) => {
