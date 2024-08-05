@@ -30,7 +30,7 @@ const commonKnowledges = [
     bigImage: BigApple,
     contentImage: AppleContent,
     title1: "'심심한 사과'가",
-    title2: "지루한 사과?",
+    title2: "\u00A0지루한 사과?", // \u00A0는 공백을 의미하는 Unicode
     explain: "일상 속 헷갈리는 관용구, 한 방에 정리!",
     class1: "일상",
     class2: "관용구",
