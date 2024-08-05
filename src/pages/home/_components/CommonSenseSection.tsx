@@ -13,11 +13,11 @@ const CommonSenseSection = () => {
 
   return (
     <section className="flex w-full flex-col gap-[10px]">
-      <div className="pl-px text-xl font-bold">휘릭! 매일 어휘 한 조각</div>
+      <div className="pl-[17px] text-xl font-bold">휘릭! 매일 어휘 한 조각</div>
       <Carousel className="w-full max-w-full">
-        <CarouselContent className="-ml-4">
+        <CarouselContent className="ml-0 mr-4">
           {commonList.map(({ id, date }) => (
-            <CarouselItem key={id} className="basis-5/6 pl-4">
+            <CarouselItem key={id} className="basis-[310px] pl-4">
               <CommonSenseItem id={id} date={date} />
             </CarouselItem>
           ))}
