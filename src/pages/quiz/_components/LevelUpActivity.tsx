@@ -27,15 +27,15 @@ const LevelUpActivity: ActivityComponentType = () => {
       <header className="sticky left-0 top-0 z-10 py-2">
         <QuizNav />
       </header>
+
       <main
-        className="flex w-full flex-col gap-16"
+        className="flex flex-col gap-[69px] px-4 pt-8"
         style={{ height: "calc(100% - 56px)" }}
       >
         <section className="flex w-full flex-col gap-2">
           <div className="text-2xl font-bold">
             <p className="text-brand">[{nickname}]님,</p>
             <p>축하합니다!</p>
-            <br />
             <br />
             <p className="inline-block text-brand">{userLevel}</p>
             <p className="inline-block">가 되셨습니다!</p>
