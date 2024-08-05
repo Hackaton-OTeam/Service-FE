@@ -28,7 +28,7 @@ const NextButton = (props: NextButtonProps) => {
   useEffect(() => {
     if (activityName === "ContentActivity") {
       setButtonText("학습하러 가기");
-    } else if (activityName === "CompleteActivity") {
+    } else if (activityName === "MainActivity") {
       setButtonText("마치기");
     }
   }, [activityName]);

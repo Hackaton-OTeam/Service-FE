@@ -46,7 +46,7 @@ const ContentActivity: ActivityComponentType<ContentParams> = ({ params }) => {
       )}
       <footer className="sticky bottom-0 z-50">
         <NextButton
-          activityName={"MainActivity" as never}
+          activityName={"CompleteActivity" as never}
           commonId={commonId}
         />
       </footer>
