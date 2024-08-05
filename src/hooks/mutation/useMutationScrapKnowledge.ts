@@ -2,7 +2,7 @@ import { useMutation } from "@tanstack/react-query";
 
 import { ScrapKnowledgeParams } from "@/types/commonType";
 
-import { scrapKnowledge } from "@/api/common";
+import { scrapKnowledge } from "@/api/scrap";
 
 export const useMutationScrapKnowledge = () => {
   const mutation = useMutation({

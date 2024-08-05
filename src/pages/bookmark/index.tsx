@@ -43,7 +43,7 @@ const BookMarkPage = () => {
             )}
             onClick={() => handleClick("knowledge")}
           >
-            지식 건강
+            매일 어휘
           </div>
         </header>
         <section className="px-4 pt-10">
